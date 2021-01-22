@@ -1,4 +1,14 @@
 const path = require( 'path' );
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+let htmlPageNames = [];
+let multipleHtmlPlugins = htmlPageNames.map(name => {
+  return new HtmlWebpackPlugin({
+    template: `./src/${name}.html`, // relative path to the HTML files
+    filename: `${name}.html`, // output HTML files
+    chunks: [`${name}`] // JS files
+  })
+});
 
 module.exports = {
 
@@ -17,12 +27,14 @@ module.exports = {
     // watch: true,
 
     // entry files
-    entry: './src/assets/ts/main.ts',
+    entry: {
+        main: './src/assets/ts/main.ts'
+    },
 
     // output bundles (location)
     output: {
-        path: path.resolve( __dirname, 'dist' ),
-        filename: 'main.js',
+        path: path.resolve( __dirname, 'dist/assets/js' ),
+        filename: '[name].js',
     },
 
     // file resolutions
@@ -39,5 +51,11 @@ module.exports = {
                 exclude: /node_modules/,
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+          template: "./src/index.html",
+          chunks: ['main']
+        })
+      ].concat(multipleHtmlPlugins)
 };
