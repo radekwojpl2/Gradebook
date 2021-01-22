@@ -17,7 +17,7 @@ module.exports = {
     // watch: true,
 
     // entry files
-    entry: './src/index.ts',
+    entry: './src/assets/ts/main.ts',
 
     // output bundles (location)
     output: {

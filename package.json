@@ -2,7 +2,7 @@
   "name": "gradebook",
   "version": "1.0.0",
   "description": "**UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.\r Jedna osoba z zespołu (np. Mentor) powinna użyć przycisku `Use this template` i dodać innych członków zespołu jako Collaborators do tego repozytorium.\r Mentorzy mogą dowolnie zmieniać zakres projektu lub zdecydować się na zupełnie inny temat.**",
-  "main": "dist/main.js",
+  "main": "dist/assests/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/radekwojpl2/Gradebook#readme",
   "devDependencies": {
+    "html-webpack-plugin": "^4.5.1",
     "ts-loader": "^8.0.14",
     "typescript": "^4.1.3",
     "webpack": "^5.17.0",
