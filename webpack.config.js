@@ -34,7 +34,7 @@ module.exports = {
     // output bundles (location)
     output: {
         path: path.resolve( __dirname, 'dist/assets/js' ),
-        filename: '[name].js',
+        filename: 'assets/js/[name].js',
     },
 
     // file resolutions
