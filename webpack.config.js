@@ -14,7 +14,7 @@ module.exports = {
     },
 
     //compile project when it changes
-    watch: true,
+    // watch: true,
 
     // entry files
     entry: './src/index.ts',
