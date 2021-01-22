@@ -5,6 +5,12 @@ module.exports = {
     // bundling mode
     mode: 'production',
 
+    //generate source map
+    devtool: 'source-map',
+
+    //compile project when it changes
+    watch: true,
+
     // entry files
     entry: './src/index.ts',
 
