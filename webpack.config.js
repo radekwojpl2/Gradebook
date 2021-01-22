@@ -3,10 +3,15 @@ const path = require( 'path' );
 module.exports = {
 
     // bundling mode
-    mode: 'production',
+    // mode: 'production',
 
     //generate source map
     devtool: 'source-map',
+
+    //add devServer
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist')
+    },
 
     //compile project when it changes
     watch: true,
