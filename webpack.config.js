@@ -12,9 +12,6 @@ let multipleHtmlPlugins = htmlPageNames.map(name => {
 
 module.exports = {
 
-    // bundling mode
-    // mode: 'production',
-
     //generate source map
     devtool: 'source-map',
 
@@ -22,9 +19,6 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist')
     },
-
-    //compile project when it changes
-    // watch: true,
 
     // entry files
     entry: {
