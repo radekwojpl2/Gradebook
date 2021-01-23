@@ -5,6 +5,8 @@
   "main": "dist/assests/js/main.js",
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage", 
     "build": "webpack --mode production",
     "serve": "webpack serve --mode development"
   },
