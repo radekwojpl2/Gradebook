@@ -1,3 +1,2 @@
 import '../css/main.css';
-
-console.log('Success')
+export const isInternalLink = (link: string) => /^\/(?!\/)/.test(link);
