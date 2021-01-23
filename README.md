@@ -3,6 +3,52 @@
     b. Tech Lead -> Marta, Wiktoria  
     c. Product Owner -> Kinga, Justyna  
     d. Development Manager -> Mateusz , Radek 
+# CodersCamp2020.GradeBook
+
+### Konfiguracja projektu
+
+Projekt został skonfigurowany przy użyciu Webpacka i Jest jako środowiska testowego. Do skonfigurowania Webpack użyte zostały następujące wtyczki:
+- style-loader i css-loader dla plików css,
+- ts-loader dla plików TypeScript,
+- html webpack plugin,
+- webpack dev server.
+
+#### Komendy do uruchamiania skryptów
+
+W celu uruchomienia aplikacji w etapie jej rozwoju należy użyć komendy: 
+```
+npm run serve
+```
+
+W celu uruchomienia testów należy użyć komendy:
+```
+npm run test
+```
+
+#### Dodawanie nowych plików do aplikacji
+
+1. Pliki .html powinny być tworzone w lokalizacji './src i posiadać podłączony plik .js zgodnie ze wzorem:
+```
+assets/js/NAZWA.js
+```
+2. Główne pliki .ts powinny być tworzone w lokalizacji './src/assets/ts' i posiadać taką samą nazwę jak odpowiadający im plik .html 
+3. Pliki .css powinny być tworzone w lokalizacji './src/assets/css', a następnie zaimportowane do plików .ts przy pomocy:
+```
+import '../css/NAZWA.css'
+```
+4. Pliki testowe powinny być tworzone w lokalizacji './src/test'
+5. W celu prawidłowego działania serwera konieczne jest dodanie plików do webpack.cofig.js zgodnie z poniższym wzorem
+   a. Dodanie nazwy pliku do tablicy htmlPageNames (bez rozszerzenia)
+   ```
+   let htmlPageNames = ['NAZWA']
+   ```
+   b. W module.export dodanie do plików wejściowych ścieżki do pliku .ts
+   ```
+   entry: {
+        main: './src/assets/ts/main.ts',
+        NAZWA: './src/assets/ts/NAZWA.ts
+    },
+    ```
 
 
 **UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.
