@@ -1,3 +1,10 @@
+###GRadebook skład
+    a. Klient -> Radek Bajor
+    b. Tech Lead -> Marta
+    c. Product Owner -> Kinga
+    d. Development Manager -> Mateusz
+
+
 **UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.
 Jedna osoba z zespołu (np. Mentor) powinna użyć przycisku `Use this template` i dodać innych członków zespołu jako Collaborators do tego repozytorium.
 Mentorzy mogą dowolnie zmieniać zakres projektu lub zdecydować się na zupełnie inny temat.**
