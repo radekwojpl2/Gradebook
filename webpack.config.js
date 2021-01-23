@@ -33,7 +33,7 @@ module.exports = {
 
     // output bundles (location)
     output: {
-        path: path.resolve( __dirname, 'dist/assets/js' ),
+        path: path.resolve( __dirname, 'dist' ),
         filename: 'assets/js/[name].js',
     },
 
