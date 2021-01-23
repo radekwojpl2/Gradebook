@@ -1,8 +1,8 @@
-###GRadebook skład
-    a. Klient -> Radek Bajor
-    b. Tech Lead -> Marta
-    c. Product Owner -> Kinga
-    d. Development Manager -> Mateusz
+### GRadebook skład
+    a. Klient -> Radek  
+    b. Tech Lead -> Marta, Wiktoria  
+    c. Product Owner -> Kinga, Justyna  
+    d. Development Manager -> Mateusz , Radek 
 
 
 **UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.
