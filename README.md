@@ -49,8 +49,32 @@ import '../css/NAZWA.css'
         NAZWA: './src/assets/ts/NAZWA.ts
     },
     ```
+#### Firebase RealTime Database
+Dla ułatwienia komunikacji z bazą danych zaimplementowany został pakiet axios (`https://www.npmjs.com/package/axios`). 
+W celu wysłania zapytania do bazy należy zaimportować plik "axios.ts" zawierający dane konfiguracyjne, który znajduje się w folderze "src".
 
+Przykład pobierania danych z bazy:
 
+```
+axios.get('NAZWA_KOLEKCJI'.json)
+.then( response => ...)
+.catch( error => ...)
+
+```
+
+Przykład wysyłania danych do bazy:
+
+```
+const user = {
+   firstName: 'Przykład',
+   lastName: 'Przykładowy'
+}
+
+axios.post('NAZWA_KOLEKCJI'.json, user)
+.then( response => ...)
+.catch( error => ...)
+
+```
 **UWAGA! Zaczynając pracę nad projektem — nie róbcie forka.
 Jedna osoba z zespołu (np. Mentor) powinna użyć przycisku `Use this template` i dodać innych członków zespołu jako Collaborators do tego repozytorium.
 Mentorzy mogą dowolnie zmieniać zakres projektu lub zdecydować się na zupełnie inny temat.**
