@@ -15,9 +15,13 @@ class CalendarData implements CalendarConstruction {
         this.date = date;
     }
 
+    //preper array of days with empty strings at beginning if month starts from different day than Monday
     private preperDaysData () : string[][] {
         const amountOfDaysInMonth:number = this.date.daysInMonth();
+        //days in moment starts from Sunday - we want from Monday so we need to substract one day
         const firstDayOfMonth:number = parseInt(this.date.startOf('month').format('d')) - 1;
+
+        //blank cells at the beggining of month
         let blankCells = [];
         for (let i = 0; i < firstDayOfMonth; i++) {
             blankCells.push('')
@@ -28,7 +32,9 @@ class CalendarData implements CalendarConstruction {
             daysCells.push(`${i}`)
         }
         
+        //array of days in month 
         const daysArray: (string)[] =  [...blankCells, ...daysCells];
+        //create array of weeks in month
         const weeksArray:(string)[][] = [];
         daysArray.forEach( (el, index) => {
             if ((index + 7) % 7 === 0) {
@@ -40,12 +46,13 @@ class CalendarData implements CalendarConstruction {
         return weeksArray
     }
 
+    //map weeks into table
     private mapDaysData () : void {
         const weeksArray = this.preperDaysData();
 
-        const mapData:string = weeksArray.map( (data, index) => {
-            return `<tr key=${index}>
-                ${data.map( (el, el_index) => `<td key=${el_index}>${el}</td>`).join(' ')}
+        const mapData:string = weeksArray.map( (data) => {
+            return `<tr>
+                ${data.map( el => `<td>${el}</td>`).join(' ')}
                     </tr>`
         }).join(' ');
 

@@ -1,5 +1,6 @@
-import moment, {Moment} from 'moment';
+import moment from 'moment';
 import CalendarData from './calendarData';
+import {MONTHS} from './monthData'
 
 class Calendar extends CalendarData {
     prev: HTMLSpanElement;
@@ -23,13 +24,13 @@ class Calendar extends CalendarData {
         const year = this.date.year();
 
         if (id === 'prev') {
-            if (month !== 0) {
+            if (month !== MONTHS.JANUARY) {
                 moment(this.date.month(month-1))
             } else {
-                moment(this.date.month(11).year(year-1))
+                moment(this.date.month(MONTHS.DECEMBER).year(year-1))
             }
         } else {
-            if (month !== 11) {
+            if (month !== MONTHS.DECEMBER) {
                 moment(this.date.month(month+1))
             } else {
                 moment(this.date.month(0).year(year+1))
