@@ -1,4 +1,6 @@
 import '../css/main.css';
-export const isInternalLink = (link: string) => /^\/(?!\/)/.test(link);
+import Calendar from './lib/calendar/calendar';
+
+new Calendar();
 
 
