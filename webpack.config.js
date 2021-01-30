@@ -1,13 +1,13 @@
-const path = require( 'path' );
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let htmlPageNames = [];
+let htmlPageNames = ['gradesTeacher'];
 const multipleHtmlPlugins = htmlPageNames.map(name => {
-  return new HtmlWebpackPlugin({
-    template: `./src/${name}.html`, // relative path to the HTML files
-    filename: `${name}.html`, // output HTML files
-    chunks: [`${name}`] // JS files
-  })
+    return new HtmlWebpackPlugin({
+        template: `./src/${name}.html`, // relative path to the HTML files
+        filename: `${name}.html`, // output HTML files
+        chunks: [`${name}`] // JS files
+    })
 });
 
 module.exports = {
@@ -22,24 +22,24 @@ module.exports = {
 
     // entry files
     entry: {
-        main: './src/assets/ts/main.ts'
+        main: './src/assets/ts/main.ts',
+        gradesTeacher: './src/assets/ts/gradesTeacher.ts'
     },
 
     // output bundles (location)
     output: {
-        path: path.resolve( __dirname, 'dist' ),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'assets/js/[name].js',
     },
 
     // file resolutions
     resolve: {
-        extensions: [ '.ts', '.js' ],
+        extensions: ['.ts', '.js'],
     },
 
     // loaders
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.tsx?/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
@@ -52,8 +52,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: "./src/index.html",
-          chunks: ['main']
+            template: "./src/index.html",
+            chunks: ['main']
         })
-      ].concat(multipleHtmlPlugins)
+    ].concat(multipleHtmlPlugins)
 };
