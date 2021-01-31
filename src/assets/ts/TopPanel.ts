@@ -1,4 +1,4 @@
-import '../css/MainMenu.css';
+import '../css/TopPanel.css';
 import {Menu} from './Menu'
 import {subPages} from './GlobalData'
 
