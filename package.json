@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage", 
+    "test:cov": "jest --coverage",
     "build": "webpack --mode production",
     "serve": "webpack serve --mode development"
   },
