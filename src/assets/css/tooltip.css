@@ -1,0 +1,25 @@
+:root {
+    --main_color: rgb(50, 129, 168);
+}
+
+.tip {
+    visibility: hidden;
+    width: 100%;
+    background-color: var(--main_color);
+    color: #ffffff;
+    text-align: center;
+    padding: 4px 1px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    margin-top: 5px;
+    transition: opacity 0.4s;
+    box-sizing: border-box;
+}
+
+.tip.active {
+    visibility: visible;
+    opacity: 1;
+}
+

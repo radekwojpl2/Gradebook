@@ -1,0 +1,42 @@
+:root {
+    --main_color: rgb(50, 129, 168);
+}
+
+#calendar {
+    max-width: 300px;
+    margin: 0 auto;
+    border: dotted 1px var(--main_color);
+    padding: 20px 10px;
+    position: relative
+}
+
+#calendar nav {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--main_color);
+}
+
+#calendar table {
+    margin: 1rem auto 0 auto;
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#calendar tr {
+    height: 2rem;
+}
+
+.active {
+    border: 1px dotted var(--main_color);
+}
+
+.active:hover {
+    background-color: var(--main_color);
+    color: #fff;
+}

@@ -1,5 +1,30 @@
 import moment, {Moment} from 'moment';
 import {CalendarConstruction} from './calendarConstruction';
+import Tooltip from './tooltip';
+
+const indexAccess = <T,K extends keyof T> (obj: T, key:K) => {
+    return obj[key]
+}
+
+type calendarHolidays = {
+    [props:string] : {
+        [props:string] : {
+            [props:string] : string
+        }
+    }
+}
+const holidays:calendarHolidays = {
+    '2021': {
+        '0': {'1': 'Nowy rok',
+            '6': '3 króli'},
+        '1': {'14': 'Walentynki'},
+        '2': {},
+        '3': {'2': 'Wielki Piątek',
+            '3': 'Wielka Sobota',
+            '4': 'Niedziela Wielkanocna'
+        }
+    }
+}
 
 class CalendarData implements CalendarConstruction {
     date: Moment;
@@ -59,6 +84,7 @@ class CalendarData implements CalendarConstruction {
         this.daysTable.innerHTML = mapData;
     }
 
+    //set month and year in navigation
     private setNavigationData () : void {
         const months = moment.months()
         const monthIndex = this.date.month()
@@ -66,9 +92,27 @@ class CalendarData implements CalendarConstruction {
         this.yearBox.innerText = `${this.date.year()}`;
     }
 
+    //add data about events to calendar from database
+    private addEvents () {
+        const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
+        const month = String(this.date.month()) ;
+        const year = String(this.date.year());
+
+        const holidaysToMap = indexAccess((indexAccess(holidays, year)),month);
+        
+        Object.keys(holidaysToMap).forEach( holidayDay => {
+            const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
+            dayWithHoliday.forEach(day => {
+                day.classList.add('active')
+                new Tooltip(day, holidaysToMap[holidayDay]).init()
+            })
+        })  
+    }
+
     mapDataToCalendar () : void {
         this.setNavigationData();
         this.mapDaysData();
+        this.addEvents()
     }
 }
 

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import CalendarData from './calendarData';
-import {MONTHS} from './monthData'
+import {MONTHS} from './monthData';
+import '../../../css/calendar.css';
 
 class Calendar extends CalendarData {
     prev: HTMLSpanElement;
