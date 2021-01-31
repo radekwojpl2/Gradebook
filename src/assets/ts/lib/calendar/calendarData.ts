@@ -2,7 +2,7 @@ import moment, {Moment} from 'moment';
 import {CalendarConstruction} from './calendarConstruction';
 import Tooltip from './tooltip';
 
-const indexAccess = <T,K extends keyof T> (obj: T, key:K) => {
+function  indexAccess <T,K extends keyof T> (obj: T, key:K) {
     return obj[key]
 }
 
@@ -98,15 +98,21 @@ class CalendarData implements CalendarConstruction {
         const month = String(this.date.month()) ;
         const year = String(this.date.year());
 
-        const holidaysToMap = indexAccess((indexAccess(holidays, year)),month);
-        
-        Object.keys(holidaysToMap).forEach( holidayDay => {
-            const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
-            dayWithHoliday.forEach(day => {
-                day.classList.add('active')
-                new Tooltip(day, holidaysToMap[holidayDay]).init()
-            })
-        })  
+        const holidaysToMap = indexAccess(holidays, year);
+
+        if (holidaysToMap !== undefined) {
+            const monthToMap = indexAccess(holidaysToMap, month);
+
+            if (monthToMap !== undefined) {
+                Object.keys(monthToMap).forEach( holidayDay => {
+                    const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
+                    dayWithHoliday.forEach(day => {
+                        day.classList.add('active')
+                        new Tooltip(day, indexAccess(monthToMap, holidayDay)).init()
+                    })
+                }) 
+            }
+        }
     }
 
     mapDataToCalendar () : void {

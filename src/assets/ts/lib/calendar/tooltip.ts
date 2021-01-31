@@ -2,7 +2,7 @@ import '../../../css/tooltip.css';
 
 class Tooltip <T extends Node> {
 
-    element: T;
+    private element: T;
     message: string;
 
     // tworzymy zmienne
