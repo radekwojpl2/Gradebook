@@ -20,7 +20,7 @@ class Calendar extends CalendarData {
         })
     };
 
-    changeView (id:string) {
+    private changeView (id:string) {
         const month = this.date.month();
         const year = this.date.year();
 

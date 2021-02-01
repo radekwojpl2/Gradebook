@@ -17,5 +17,5 @@ describe('Tooltip class', () => {
             expect(tooltip.message).not.toBe("Hello world!");
             expect(tooltip.message).toBe("Goodbye");
         });
-    })
+    });
 })
