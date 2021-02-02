@@ -1,0 +1,58 @@
+{
+    "students": [
+    {
+        "id": 1,
+        "gender": "female",
+        "languages": ["english", "french"]
+    },
+    {
+        "id": 2,
+        "gender": "female",
+        "languages": ["english", "german"]
+    },
+    {
+        "id": 3,
+        "gender": "male",
+        "languages": ["english", "german"]
+    },
+    {
+        "id": 4,
+        "gender": "male",
+        "languages": ["english", "french"]
+    },
+    {
+        "id": 5,
+        "gender": "male",
+        "languages": ["english", "italian"]
+    },
+    {
+        "id": 6,
+        "gender": "female",
+        "languages": ["english", "italian"]
+    },
+    {
+        "id": 7,
+        "gender": "female",
+        "languages": ["english", "german"]
+    },
+    {
+        "id": 8,
+        "gender": "male",
+        "languages": ["english", "french"]
+    },
+    {
+        "id": 9,
+        "gender": "female",
+        "languages": ["english", "german"]
+    },
+    {
+        "id": 10,
+        "gender": "female",
+        "languages": ["english", "french"]
+    },
+    {
+        "id": 11,
+        "gender": "male",
+        "languages": ["english", "italian"]
+    }]
+}

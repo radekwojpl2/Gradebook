@@ -1,6 +1,7 @@
 import '../css/main.css';
-import Calendar from './lib/calendar/calendar';
+import {Charts} from './lib/Chart/Charts';
 
-new Calendar();
+Charts()
+
 
 

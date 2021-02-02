@@ -5,13 +5,12 @@ class Tooltip <T extends Node> {
     private element: T;
     message: string;
 
-    // tworzymy zmienne
     constructor (element: T, message:string) {
         this.element = element;
         this.message = message;
+        this.init()
     }
 
-    // tworzymy element blokowy i nadajemy efekt
     init() {
         const tip = document.createElement('div');
         tip.classList.add('tip');
