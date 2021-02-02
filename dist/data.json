@@ -1,0 +1,87 @@
+{
+    "students": [
+    {
+        "id": 1,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 2,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 3,
+        "gender": "male",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 4,
+        "gender": "male",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 5,
+        "gender": "male",
+        "secondLanguage": "italian"
+    },
+    {
+        "id": 6,
+        "gender": "female",
+        "secondLanguage": "italian"
+    },
+    {
+        "id": 7,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 8,
+        "gender": "male",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 9,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 10,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 11,
+        "gender": "male",
+        "secondLanguage": "italian"
+    }, {
+        "id": 12,
+        "gender": "female",
+        "secondLanguage": "spanish"
+    },
+    {
+        "id": 13,
+        "gender": "female",
+        "secondLanguage": "chinese"
+    },
+    {
+        "id": 14,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 15,
+        "gender": "male",
+        "secondLanguage": "spanish"
+    },
+    {
+        "id": 16,
+        "gender": "male",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 17,
+        "gender": "female",
+        "secondLanguage": "chinese"
+    }]
+}

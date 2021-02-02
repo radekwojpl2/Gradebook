@@ -108,7 +108,7 @@ class CalendarData implements CalendarConstruction {
                     const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
                     dayWithHoliday.forEach(day => {
                         day.classList.add('active')
-                        new Tooltip(day, indexAccess(monthToMap, holidayDay)).init()
+                        new Tooltip(day, indexAccess(monthToMap, holidayDay))
                     })
                 }) 
             }
