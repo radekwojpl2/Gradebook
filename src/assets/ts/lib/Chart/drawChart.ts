@@ -1,35 +1,29 @@
 import Chart from 'chart.js';
 import { chartData } from './types';
 
-class DonoughtChart {
+class DrawChart {
     element: HTMLCanvasElement;
     chartData: chartData;
 
     constructor(id: string, data: chartData) {
         this.element = document.querySelector(`${id}`) as HTMLCanvasElement;
         this.chartData = data;
-        this.doughnutChart()
+        this.drawChart()
     }
 
-    doughnutChart () {
+    private drawChart () {
         new Chart( this.element , {
-            type: 'polarArea',
+            type: this.chartData.type,
             data: {
-                datasets: [{
-                    data: this.chartData.data,
-                    backgroundColor: this.chartData.colors
-                }],
+                datasets: this.chartData.datasets,
                 labels: this.chartData.labels,
 
             },
-            options: {
-                cutoutPercentage: 50,
-            }
         })
     }
 }
 
-export default DonoughtChart
+export default DrawChart
 
 
 

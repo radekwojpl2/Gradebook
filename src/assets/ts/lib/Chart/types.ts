@@ -1,5 +1,8 @@
 export type chartData = {
+    type: 'polarArea' | 'radar',
     labels: string[];
-    data: number[];
-    colors?: string[]
+    datasets: {
+        data :number[],
+        backgroundColor?: string[]
+    }[]
 }
