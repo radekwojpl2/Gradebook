@@ -61,8 +61,11 @@ export const Charts = () => {
             }
         })
         new DrawChart('#classChart', polarChartData);
-        new DrawChart('#languagesChart', radarChartData)
-
+        new DrawChart('#languagesChart', radarChartData);
     })
-    .catch( error => {throw 'Ups something went wrong'});
+    .catch( error => {
+        const documents = Array.from(document.querySelectorAll('article div')) as HTMLDivElement[];
+        documents.forEach( doc => doc.innerText = 'Ups... Something went wrong');
+        console.log(error)
+    });
 }

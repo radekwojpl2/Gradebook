@@ -2,7 +2,7 @@ import Chart from 'chart.js';
 import { chartData } from './types';
 
 class DrawChart {
-    element: HTMLCanvasElement;
+    private element: HTMLCanvasElement;
     chartData: chartData;
 
     constructor(id: string, data: chartData) {

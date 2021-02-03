@@ -40,7 +40,7 @@ class CalendarData implements CalendarConstruction {
     yearBox: HTMLSpanElement;
     daysTable: HTMLTableSectionElement;
 
-    constructor(date:Moment, extraData?:string) {
+    constructor(date:Moment) {
         this.monthBox = document.querySelector('#month') as HTMLSpanElement;
         this.yearBox = document.querySelector('#year') as HTMLSpanElement;
         this.daysTable = document.querySelector('tbody') as HTMLTableSectionElement;

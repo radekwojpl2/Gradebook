@@ -4,9 +4,9 @@ import {MONTHS} from './monthData';
 import '../../../css/calendar.css';
 
 class Calendar extends CalendarData {
-    prev: HTMLSpanElement;
-    next: HTMLSpanElement;
-    extraData?: string;
+    private prev: HTMLSpanElement;
+    private next: HTMLSpanElement;
+    public extraData?: string;
 
     constructor(extraData?:string, date=moment()) {
         super(date)
