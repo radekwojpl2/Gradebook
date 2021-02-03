@@ -1,4 +1,105 @@
+@import url('./styles.css');
+
 h1 {
     text-align: center;
     margin: 4rem auto;
+    color: var(--text_color);
+    text-transform: uppercase;
+    font-size: 2.5rem;
 }
+
+h2 {
+    border-bottom: 1px solid black;
+    margin: 2rem 1rem;
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--text_color);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1.2rem;
+    align-self: center;
+    text-align: justify;
+    padding: 0 2rem
+}
+
+article div {
+    padding: 1rem 2rem;
+    width: 50%;
+    align-self: center;
+}
+
+.area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    background-color: var(--bg_color);
+    border-radius: .5rem;
+    margin: 0 1.5rem;
+}
+
+#statistics {
+    flex: 1;
+    padding: 0 3rem;
+}
+
+#statistics article {
+    display: flex;
+    margin: 3rem auto;
+}
+
+#statistics article:last-child {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 1050px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    article div {
+        padding: 1rem 0.5rem;
+        width: 100%;
+    }
+
+    .box {
+        margin: 0 0.5rem;
+    }
+
+    #statistics {
+        padding: 0 0;
+    }
+
+    #statistics article, #statistics article:last-child {
+        flex-direction: column-reverse;
+        margin: 1.5rem auto;
+    }
+}
+
+@media (max-width: 800px) {
+
+    h2 {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+
+    .box {
+        margin: 0 0;
+    }
+}
+
+

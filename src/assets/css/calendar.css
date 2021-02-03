@@ -1,13 +1,12 @@
-:root {
-    --main_color: rgb(50, 129, 168);
-}
+@import url('./styles.css');
 
 #calendar {
-    max-width: 300px;
-    margin: 0 auto;
-    border: dotted 1px var(--main_color);
+    min-width: 250px;
+    margin: 1rem;
     padding: 20px 10px;
-    position: relative
+    position: relative;
+    color: var(--text_color);
+    font-size: 1.2rem;
 }
 
 #calendar nav {
@@ -15,7 +14,7 @@
     justify-content: space-between;
     font-size: 1.5rem;
     cursor: pointer;
-    color: var(--main_color);
+    color: var(--text_color);
 }
 
 #calendar table {
@@ -33,19 +32,22 @@
 }
 
 .active {
-    border: 1px dotted var(--main_color);
+    border: 3px dotted var(--first_main_color);
 }
 
 .active:hover {
-    background-color: var(--main_color);
+    background-color: var(--first_main_color);
     color: #fff;
 }
 
 .exam {
-    background-color: pink;
+    background-color: var(--second_main_color);
+    color: #fff;
+    border: 3px transparent solid;
 }
 
 .exam:hover {
-    background-color: #fff;
-    border: 1px pink solid;
+    background-color: transparent;
+    color: var(--text_color);
+    border: 3px var(--second_main_color) solid;
 }

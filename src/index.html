@@ -8,44 +8,54 @@
 </head>
 <body>
     <h1>Welcome on GradeBook Page</h1>
-    <div id="statistics">
-        <div>
-            <canvas id="classChart" width="800" height="800"></canvas>
-        </div>
-        <div>
-            <canvas id="languagesChart" width="800" height="800"></canvas>
+    <div class="area">
+        <section id="statistics" class="box">
+            <h2>Some facts about our class</h2>
+            <article>
+                <div>
+                    <canvas id="classChart" width="500" height="500"></canvas>
+                </div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nam ipsam libero nulla beatae labore, nobis distinctio tenetur, illum officia hic deleniti, dolore eaque eum? Ducimus placeat molestiae explicabo nulla. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores quia perferendis accusantium nesciunt nihil minima ab accusamus repellat, suscipit, non deleniti nulla adipisci fugiat iusto quasi architecto, aut qui repudiandae. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi omnis dicta consectetur? Rem nostrum soluta expedita laboriosam consequuntur voluptates tempora aperiam consectetur quibusdam sit, fugit deserunt, et quod delectus blanditiis!</p>
+            </article>
+            <article>
+                <div>
+                    <canvas id="languagesChart" width="500" height="500"></canvas>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sapiente, eius labore nam ullam ducimus delectus reiciendis voluptatem dolorum aut nemo aliquam porro voluptatibus rem vitae deleniti earum quod alias! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur dolores ipsam cumque sunt perspiciatis eaque, laboriosam aperiam atque numquam inventore esse! Itaque, sit. Molestiae, quo eveniet velit temporibus blanditiis deserunt. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque quibusdam quae explicabo fugiat iusto libero quasi eum consequuntur veniam accusantium saepe illo eveniet sint, excepturi natus officia obcaecati enim incidunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptatibus alias quae earum inventore itaque quis aspernatur laboriosam. Deserunt, architecto maiores! Accusantium deserunt quaerat doloribus commodi consequatur ratione sapiente atque.</p>
+            </article>
+        </section>
+        <div class="box">
+            <h2>Calendar</h2>
+            <section id="calendar">
+                <nav>
+                    <span id="prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span id="month">March</span>
+                    <span id="year">2021</span>
+                    <span id="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </nav>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                            <th>Sun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                    </tbody>
+                </table>
+            </section>   
         </div>
     </div>
-    <div>
-        <div id="notifications"></div>
-    <div id="calendar">
-        <nav>
-            <span id="prev">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            <span id="month">March</span>
-            <span id="year">2021</span>
-            <span id="next">
-                <i class="fas fa-chevron-right"></i>
-            </span>
-        </nav>
-        <table>
-            <thead>
-                <tr>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    <th>Sun</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>   
-    </div>
+    <div id="notifications"></div>
 </body>
 </html>
