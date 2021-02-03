@@ -1,17 +1,8 @@
-import {chartData} from './types';
+import {chartData, Students} from './types';
 import DrawChart from './drawChart';
 import axios from 'axios';
 import '../../../css/charts.css';
 
-type Student = {
-    id: number,
-    gender: string,
-    secondLanguage: string
-}
-
-type Students = {
-    students: Student[]
-}
 
 enum GENDER {
     MALE = 'male',
@@ -19,8 +10,8 @@ enum GENDER {
 }
 
 enum COLOR {
-    MALE = 'rgba(66, 185, 245, 0.6)',
-    FEMALE = 'rgba(193, 109, 242, 0.6)'
+    MALE = 'rgba(54,162,235, 0.6)',
+    FEMALE = 'rgba(255,99,132, 0.6)'
 }
 
 export const Charts = () => {
@@ -38,7 +29,8 @@ export const Charts = () => {
                     COLOR.MALE,
                     COLOR.FEMALE
                 ]}
-            ]
+            ],
+            title: "Amount of females and males"
         };
 
         let radarChartData:chartData = {
@@ -46,10 +38,15 @@ export const Charts = () => {
             labels: ['spanish', 'german', 'italian', 'french', 'chinese'],
             datasets: [
                 {data: [0,0,0,0,0],
-                backgroundColor: [COLOR.MALE]},
+                backgroundColor: [COLOR.MALE],
+                label: GENDER.MALE
+                },
                 {data: [0,0,0,0,0],
-                backgroundColor: [COLOR.FEMALE]}
-            ]
+                backgroundColor: [COLOR.FEMALE],
+                label: GENDER.FEMALE
+                }
+            ],
+            title: "As second language we are learning:"
         }
 
         students.forEach( student => {

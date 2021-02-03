@@ -18,7 +18,25 @@ class DrawChart {
                 datasets: this.chartData.datasets,
                 labels: this.chartData.labels,
 
+             
             },
+            options: {
+                legend: {
+                    labels: {
+                        fontSize: 16
+                    }
+                },
+                title: {
+                    display: true,
+                    text: this.chartData.title,
+                    fontSize:20
+                },
+                scale: {
+                    pointLabels: {
+                        fontSize: 16
+                }
+            }
+            }
         })
     }
 }
