@@ -4,7 +4,8 @@ import '../css/main.css';
 
 
 Charts();
-new Calendar()
+const calendar = new Calendar('data.json')
+
 
 
 

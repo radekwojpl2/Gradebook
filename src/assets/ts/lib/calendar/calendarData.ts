@@ -1,6 +1,7 @@
 import moment, {Moment} from 'moment';
 import {CalendarConstruction} from './calendarConstruction';
 import Tooltip from './tooltip';
+import axios from 'axios';
 
 function  indexAccess <T,K extends keyof T> (obj: T, key:K) {
     return obj[key]
@@ -26,18 +27,37 @@ const holidays:calendarHolidays = {
     }
 }
 
+interface Exam {
+    id: string,
+    subject: string,
+    topic: string,
+    timestamp: number
+}
+
 class CalendarData implements CalendarConstruction {
     date: Moment;
     monthBox: HTMLSpanElement;
     yearBox: HTMLSpanElement;
     daysTable: HTMLTableSectionElement;
 
-
-    constructor(date:Moment) {
+    constructor(date:Moment, extraData?:string) {
         this.monthBox = document.querySelector('#month') as HTMLSpanElement;
         this.yearBox = document.querySelector('#year') as HTMLSpanElement;
         this.daysTable = document.querySelector('tbody') as HTMLTableSectionElement;
         this.date = date;
+    }
+
+    private async getExtraData (path:string | undefined) {
+        if (path !== undefined) {
+        axios.get<{exams: Exam[]}>(path)
+        .then(response => {
+            const exams = response.data.exams;
+            this.addExamsToCalendar(exams)
+        })
+        .catch(error => console.log(error))}
+        else {
+            return 
+        }
     }
 
     //preper array of days with empty strings at beginning if month starts from different day than Monday
@@ -115,10 +135,23 @@ class CalendarData implements CalendarConstruction {
         }
     }
 
-    mapDataToCalendar () : void {
+    addExamsToCalendar (data:Exam[]) {
+        const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
+        data.forEach( exam => {
+            const examDate = moment.unix(exam.timestamp);
+            if (examDate.month() === this.date.month() && examDate.year() === this.date.year()) {
+                const examDay = days.filter(day => Number(day.innerText) === examDate.date());
+                examDay[0].classList.add('exam');
+                new Tooltip(examDay[0], `${exam.subject}: ${exam.topic}`)
+            }
+        })
+    }
+
+    mapDataToCalendar (data?:string) {
         this.setNavigationData();
         this.mapDaysData();
-        this.addEvents()
+        this.addEvents();
+        this.getExtraData(data)
     }
 }
 

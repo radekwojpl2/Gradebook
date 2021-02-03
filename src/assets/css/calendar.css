@@ -40,3 +40,12 @@
     background-color: var(--main_color);
     color: #fff;
 }
+
+.exam {
+    background-color: pink;
+}
+
+.exam:hover {
+    background-color: #fff;
+    border: 1px pink solid;
+}

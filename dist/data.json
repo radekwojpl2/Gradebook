@@ -83,5 +83,19 @@
         "id": 17,
         "gender": "female",
         "secondLanguage": "chinese"
-    }]
+    }],
+    "exams" : [
+        {"id":1,
+        "subject": "mathematic",
+        "topic": "Functions",
+        "timestamp": 1611532800},
+        {"id":2,
+        "subject": "english",
+        "topic": "Conditionals",
+        "timestamp": 1614211200},
+        {"id":3,
+        "subject": "biology",
+        "topic": "Inheritance",
+        "timestamp": 1614470400}
+    ]
 }

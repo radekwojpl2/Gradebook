@@ -6,17 +6,19 @@ import '../../../css/calendar.css';
 class Calendar extends CalendarData {
     prev: HTMLSpanElement;
     next: HTMLSpanElement;
+    extraData?: string;
 
-    constructor(date=moment()) {
+    constructor(extraData?:string, date=moment()) {
         super(date)
         this.prev = document.querySelector('#prev') as HTMLSpanElement;
         this.next = document.querySelector('#next') as HTMLSpanElement;
+        this.extraData = extraData;
 
         this.prev.addEventListener( 'click', () => {this.changeView('prev')});
         this.next.addEventListener( 'click', () => {this.changeView('next')});
 
         document.addEventListener('DOMContentLoaded', () => {
-            this.mapDataToCalendar()
+            this.mapDataToCalendar(this.extraData)
         })
     };
 
@@ -37,7 +39,8 @@ class Calendar extends CalendarData {
                 moment(this.date.month(0).year(year+1))
             }
         };
-        this.mapDataToCalendar()
+        this.mapDataToCalendar(this.extraData);
+
     }
 };
 

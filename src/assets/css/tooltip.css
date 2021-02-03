@@ -5,7 +5,6 @@
 .tip {
     visibility: hidden;
     width: 100%;
-    background-color: var(--main_color);
     color: #ffffff;
     text-align: center;
     padding: 4px 1px;
@@ -21,5 +20,14 @@
 .tip.active {
     visibility: visible;
     opacity: 1;
+    background-color: var(--main_color);
 }
+
+.exam .tip.active {
+    visibility: visible;
+    opacity: 1;
+    background-color: pink;
+    text-transform: capitalize;
+}
+
 
