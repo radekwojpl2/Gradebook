@@ -4,12 +4,12 @@ import Tooltip from './tooltip';
 import {EventsData} from './generalData'
 
 interface addEvents {
-    readonly events: EventsData[]
+    events: EventsData[]
 }
 
 class CalendarEvents extends Calendar implements addEvents {
 
-    readonly events: EventsData[];
+    events: EventsData[];
 
     constructor(events: EventsData[], date?:string) {
         super(date)
@@ -27,12 +27,13 @@ class CalendarEvents extends Calendar implements addEvents {
 
     private addEventsToCalendar (data:EventsData) {
         const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
-        data.data.forEach( exam => {
-            const examDate = moment.unix(exam.timestamp);
-            if (examDate.month() === this.date.month() && examDate.year() === this.date.year()) {
-                const examDay = days.filter(day => Number(day.innerText) === examDate.date());
-                examDay[0].classList.add(data.className);
-                new Tooltip(examDay[0], `${exam.topic}`)
+        data.data.forEach( event => {
+            console.log(event)
+            const eventDate = moment.unix(event.timestamp);
+            if (eventDate.month() === this.date.month() && eventDate.year() === this.date.year()) {
+                const eventDay = days.filter(day => Number(day.innerHTML) === eventDate.date());
+                eventDay[0].classList.add(data.className);
+                new Tooltip(eventDay[0], `${event.topic}`)
             }
         })
     }

@@ -16,6 +16,7 @@ export const Calendar = () => {
                 }
             });;
 
+
             const examsCalendar:EventsData = {
                 data: examsToMap,
                 className: 'exams'
