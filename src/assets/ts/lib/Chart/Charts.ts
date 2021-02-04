@@ -1,18 +1,8 @@
-import {chartData, Students} from './types';
+import {chartData, Students, GENDER, COLOR} from './generalData';
 import DrawChart from './drawChart';
 import axios from 'axios';
 import '../../../css/charts.css';
 
-
-enum GENDER {
-    MALE = 'male',
-    FEMALE = 'female'
-}
-
-enum COLOR {
-    MALE = 'rgba(54,162,235, 0.6)',
-    FEMALE = 'rgba(255,99,132, 0.6)'
-}
 
 export const Charts = () => {
     
@@ -65,7 +55,6 @@ export const Charts = () => {
     })
     .catch( error => {
         const documents = Array.from(document.querySelectorAll('article div')) as HTMLDivElement[];
-        documents.forEach( doc => doc.innerText = 'Ups... Something went wrong');
-        console.log(error)
+        documents.forEach( doc => doc.innerText = 'Ups... Something went wrong')
     });
 }

@@ -1,5 +1,5 @@
 import Chart from 'chart.js';
-import { chartData } from './types';
+import { chartData } from './generalData';
 
 class DrawChart {
     private element: HTMLCanvasElement;

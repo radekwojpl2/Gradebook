@@ -18,3 +18,13 @@ export type Student = {
 export type Students = {
     students: Student[]
 }
+
+export enum GENDER {
+    MALE = 'male',
+    FEMALE = 'female'
+}
+
+export enum COLOR {
+    MALE = 'rgba(54,162,235, 0.6)',
+    FEMALE = 'rgba(255,99,132, 0.6)'
+}
