@@ -3,9 +3,6 @@ import {CalendarConstruction} from './calendarConstruction';
 import Tooltip from './tooltip';
 import axios from 'axios';
 
-function  indexAccess <T,K extends keyof T> (obj: T, key:K) {
-    return obj[key]
-}
 
 type calendarHolidays = {
     [props:string] : {
@@ -115,20 +112,20 @@ class CalendarData implements CalendarConstruction {
     //add data about events to calendar from database
     private addEvents () {
         const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
-        const month = String(this.date.month()) ;
-        const year = String(this.date.year());
+        const month = this.date.month() ;
+        const year = this.date.year();
 
-        const holidaysToMap = indexAccess(holidays, year);
+        const holidaysToMap = holidays[year];
 
         if (holidaysToMap !== undefined) {
-            const monthToMap = indexAccess(holidaysToMap, month);
+            const monthToMap = holidaysToMap[month];
 
             if (monthToMap !== undefined) {
                 Object.keys(monthToMap).forEach( holidayDay => {
                     const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
                     dayWithHoliday.forEach(day => {
                         day.classList.add('active')
-                        new Tooltip(day, indexAccess(monthToMap, holidayDay))
+                        new Tooltip(day, monthToMap[holidayDay])
                     })
                 }) 
             }
