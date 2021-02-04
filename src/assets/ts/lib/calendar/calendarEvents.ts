@@ -1,44 +1,42 @@
 import moment from 'moment';
+import Calendar from './calendar';
+import Tooltip from './tooltip';
+import {EventsData} from './generalData'
 
+interface addEvents {
+    readonly events: EventsData[]
+}
 
+class CalendarEvents extends Calendar implements addEvents {
 
+    readonly events: EventsData[];
 
-class CalendarEvents {
-    // private prev: HTMLSpanElement;
-    // private next: HTMLSpanElement;
-    public extraData?: string;
+    constructor(events: EventsData[], date?:string) {
+        super(date)
+        this.events = events;
 
-    constructor(extraData?:string, date=moment()) {
-    
-        // this.prev = document.querySelector('#prev') as HTMLSpanElement;
-        // this.next = document.querySelector('#next') as HTMLSpanElement;
-        this.extraData = extraData;
+        this.events.forEach(events => this.addEventsToCalendar(events))
 
-        // this.prev.addEventListener( 'click', () => {this.changeView('prev')});
-        // this.next.addEventListener( 'click', () => {this.changeView('next')});
+        this.parentElement.addEventListener( 'click', element => {
+            const target = element.target as HTMLElement;
+            if ((target.id === 'prev' || target.id === 'next') && this.events ) {
+                this.events.forEach(events => this.addEventsToCalendar(events))
+            }
+        })
+    }
 
-    };
+    private addEventsToCalendar (data:EventsData) {
+        const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
+        data.data.forEach( exam => {
+            const examDate = moment.unix(exam.timestamp);
+            if (examDate.month() === this.date.month() && examDate.year() === this.date.year()) {
+                const examDay = days.filter(day => Number(day.innerText) === examDate.date());
+                examDay[0].classList.add(data.className);
+                new Tooltip(examDay[0], `${exam.topic}`)
+            }
+        })
+    }
 
-    // private changeView (id:string) {
-    //     const month = this.date.month();
-    //     const year = this.date.year();
-
-    //     if (id === 'prev') {
-    //         if (month !== MONTHS.JANUARY) {
-    //             moment(this.date.month(month-1))
-    //         } else {
-    //             moment(this.date.month(MONTHS.DECEMBER).year(year-1))
-    //         }
-    //     } else {
-    //         if (month !== MONTHS.DECEMBER) {
-    //             moment(this.date.month(month+1))
-    //         } else {
-    //             moment(this.date.month(0).year(year+1))
-    //         }
-    //     };
-    //     this.init();
-
-    // }
 };
 
 export default CalendarEvents

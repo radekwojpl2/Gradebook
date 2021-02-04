@@ -97,5 +97,13 @@
         "subject": "biology",
         "topic": "Inheritance",
         "timestamp": 1614470400}
-    ]
+    ],
+    "holidays" : [
+        {"id":1,
+            "holiday": "Valetine's Day",
+            "timestamp": 1613260800},
+        {"id":2,
+            "subject": "New Year",
+            "timestamp": 1609459200}
+        ]
 }

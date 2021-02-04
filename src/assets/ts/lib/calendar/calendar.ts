@@ -1,55 +1,27 @@
 import moment, {Moment} from 'moment';
-import Tooltip from './tooltip';
-import {MONTHS} from './monthData';
+import {MONTHS} from './generalData';
 import '../../../css/calendar.css';
 
-type calendarHolidays = {
-    [props:string] : {
-        [props:string] : {
-            [props:string] : string
-        }
-    }
-}
-const holidays:calendarHolidays = {
-    '2021': {
-        '0': {'1': 'Nowy rok',
-            '6': '3 króli'},
-        '1': {'14': 'Walentynki'},
-        '2': {},
-        '3': {'2': 'Wielki Piątek',
-            '3': 'Wielka Sobota',
-            '4': 'Niedziela Wielkanocna'
-        }
-    }
-}
-
-interface Exam {
-    id: string,
-    subject: string,
-    topic: string,
-    timestamp: number
-}
 
 class Calendar  {
-    date: Moment;
-    parentElement: HTMLElement;
+    protected date: Moment;
+    protected parentElement: HTMLElement;
 
     constructor(date?:string) {
         this.date = moment(date);
         this.parentElement = document.querySelector('#calendar') as HTMLElement;
         this.init();
-        this.addEvents();
 
         this.parentElement.addEventListener( 'click', element => {
             const target = element.target as HTMLElement;
             if (target.id === 'prev' || target.id === 'next') {
                 this.changeView(target.id);
-                this.addEvents();
             }
         })
     }
 
-    protected init() {
+    //building calendar and map data
+    private init() {
         const calendarConstruction:string = `<nav>
                                                 <span id="prev">
                                                     <
@@ -81,19 +53,6 @@ class Calendar  {
                                             </table>`
         this.parentElement.innerHTML = calendarConstruction;
     }
-
-    // private async getExtraData (path:string | undefined) {
-    //     if (path !== undefined) {
-    //     axios.get<{exams: Exam[]}>(path)
-    //     .then(response => {
-    //         const exams = response.data.exams;
-    //         this.addExamsToCalendar(exams)
-    //     })
-    //     .catch(error => console.log(error))}
-    //     else {
-    //         return 
-    //     }
-    // }
 
     //preper array of days with empty strings at beginning if month starts from different day than Monday
     private preperDaysData () : string[][] {
@@ -138,37 +97,15 @@ class Calendar  {
         return mapData;
     }
 
-    // //set month and year in navigation
+    //set month and year in navigation
     private setMonth () : string {
         const months = moment.months()
         const monthIndex = this.date.month()
         return `${months[monthIndex]}`;
     }
 
-    // //add data about events to calendar from database
-    private addEvents () {
-        const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
-        const month = this.date.month() ;
-        const year = this.date.year();
-
-        const holidaysToMap = holidays[year];
-
-        if (holidaysToMap !== undefined) {
-            const monthToMap = holidaysToMap[month];
-
-            if (monthToMap !== undefined) {
-                Object.keys(monthToMap).forEach( holidayDay => {
-                    const dayWithHoliday = days.filter( day => day.innerText === holidayDay)
-                    dayWithHoliday.forEach(day => {
-                        day.classList.add('active')
-                        new Tooltip(day, monthToMap[holidayDay])
-                    })
-                }) 
-            }
-        }
-    }
-
-    private changeView (id:string) {
+    //function to change month and year in calendar
+    protected changeView (id:string) {
         const month = this.date.month();
         const year = this.date.year();
 
@@ -189,24 +126,6 @@ class Calendar  {
 
     }
 
-    // addExamsToCalendar (data:Exam[]) {
-    //     const days: HTMLTableCellElement[] = Array.from(document.querySelectorAll('tbody td'));
-    //     data.forEach( exam => {
-    //         const examDate = moment.unix(exam.timestamp);
-    //         if (examDate.month() === this.date.month() && examDate.year() === this.date.year()) {
-    //             const examDay = days.filter(day => Number(day.innerText) === examDate.date());
-    //             examDay[0].classList.add('exam');
-    //             new Tooltip(examDay[0], `${exam.subject}: ${exam.topic}`)
-    //         }
-    //     })
-    // }
-
-    // mapDataToCalendar (data?:string) {
-    //     this.setNavigationData();
-    //     this.mapDaysData();
-    //     this.addEvents();
-    //     this.getExtraData(data)
-    // }
 }
 
 export default Calendar

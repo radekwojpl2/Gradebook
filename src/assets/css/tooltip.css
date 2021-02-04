@@ -22,7 +22,7 @@
     background-color: var(--first_main_color);
 }
 
-.exam .tip.active {
+.exams .tip.active {
     visibility: visible;
     opacity: 1;
     background-color:var(--second_main_color);

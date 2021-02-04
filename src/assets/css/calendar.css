@@ -32,22 +32,22 @@
     height: 2rem;
 }
 
-.active {
+.holidays {
     border: 3px dotted var(--first_main_color);
 }
 
-.active:hover {
+.holidays:hover {
     background-color: var(--first_main_color);
     color: #fff;
 }
 
-.exam {
+.exams {
     background-color: var(--second_main_color);
     color: #fff;
     border: 3px transparent solid;
 }
 
-.exam:hover {
+.exams:hover {
     background-color: transparent;
     color: var(--text_color);
     border: 3px var(--second_main_color) solid;
