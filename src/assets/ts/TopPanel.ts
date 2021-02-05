@@ -1,29 +1,8 @@
 import '../css/TopPanel.css';
 import {Menu} from './Menu'
-import {subPages} from './GlobalData'
+import {subPages} from './SubPagesData'
+import {createElementWithClasses, createElementWithInnerText, appendChildrenToElement} from './GlobalFunctions'
 
-//append children to element
-const appendChildrenToElement = (element: HTMLElement, ...children: HTMLElement[]) => {
-    for (let child in children) {
-      element.appendChild(children[child]);
-    }
-    return element
-  }
-
-//create DOM element with included classes
-export const createElementWithClasses = (element: string, ...classes: string[]) => {
-    const newDOMElement = document.createElement(element);
-    newDOMElement.classList.add(...classes);
-    return newDOMElement
-  }
-  
-//create DOM element with inner text
-const createElementWithInnerText = (element: string, text: string, ...classes: string[]) => {
-    let newDOMElement = document.createElement(element);
-    newDOMElement.classList.add(...classes);
-    newDOMElement.innerText = text; 
-    return newDOMElement
-  }
 
 const toggleMenuBtn = (navBox: HTMLElement) => {
     navBox.classList.toggle('navigationBoxHidden');

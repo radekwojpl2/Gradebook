@@ -1,4 +1,4 @@
-import {createElementWithClasses} from './TopPanel'
+import {createElementWithClasses} from './GlobalFunctions'
 
 type SubPage = {
     subpage: string;
