@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10% 0;
+}
+
+.announcements-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
+
+.announcements-buttons > button {
+  padding: 2.5% 5%;
+}
+
+#sort-input {
+  width: 50%;
+  padding: 1%;
+  margin-top: 25px;
+}
+
+.announcements-container {
+  width: 100%;
+  padding: 10px;
+}
+
+.announcement {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgba(182, 180, 180, 0.198);
+  padding: 5% 3%;
+  margin: 15px 0;
+}
+
+.announcement-title {
+  width: 100%;
+  text-align: center;
+  padding: 1%;
+  margin: 5% 5% 5%;
+  border-bottom: inset rgb(51, 51, 51) 1px;
+}
+
+.announcement-description {
+  text-align: justify;
+  line-height: 1.5;
+  margin: 2% 5%;
+}
+
+.exam-date,
+.exam-topic {
+  width: 100%;
+  margin: 0 5%;
+  line-height: 1.5;
+}
+
+@media (min-width: 1025px) {
+  h1 {
+    padding: 2.5% 0;
+  }
+  .announcements-buttons {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .announcements-buttons > button {
+    padding: 10px 20px;
+  }
+  #sort-input {
+    width: 20%;
+    padding: 1%;
+    margin-top: 0;
+  }
+  .announcements-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .announcement {
+    padding: 2.5% 3%;
+    margin: 25px 0;
+  }
+  .announcement-title {
+    margin: 2.5%;
+  }
+}
