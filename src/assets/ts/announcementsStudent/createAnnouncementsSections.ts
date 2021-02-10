@@ -1,4 +1,4 @@
-import {appendChildrenToElement, createElementWithClasses, createElementWithInnerText} from './GlobalFunctions'
+import {appendChildrenToElement, createElementWithClasses, createElementWithInnerText} from '../GlobalFunctions'
 
 export const createAnnouncementsSections = () => {
     const textContent = `
@@ -16,5 +16,4 @@ export const createAnnouncementsSections = () => {
     const announcementsSection = document.querySelector('.announcements-section')!
     announcementsSection.appendChild(announcementsButtonsSection)
     announcementsSection.appendChild(announcementsContainer)
-    const ann = new AnnouncementsList()
 }
