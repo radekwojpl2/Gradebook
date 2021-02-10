@@ -1,4 +1,4 @@
-import {appendChildrenToElement, createElementWithClasses, createElementWithInnerText} from '../GlobalFunctions'
+import {createElementWithClasses} from '../GlobalFunctions'
 
 export const createAnnouncementsSections = () => {
     const textContent = `
