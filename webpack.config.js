@@ -1,7 +1,7 @@
 const path = require( 'path' );
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let htmlPageNames = [];
+let htmlPageNames = ['announcementsTeacher'];
 const multipleHtmlPlugins = htmlPageNames.map(name => {
   return new HtmlWebpackPlugin({
     template: `./src/${name}.html`, // relative path to the HTML files
@@ -22,7 +22,8 @@ module.exports = {
 
     // entry files
     entry: {
-        main: './src/assets/ts/main.ts'
+        main: './src/assets/ts/main.ts',
+        announcementsTeacher: './src/assets/ts/announcementsTeacher.ts'
     },
 
     // output bundles (location)
@@ -52,7 +53,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-          template: "./src/announcementsTeacher.html",
+          template: "./src/index.html",
           chunks: ['main']
         })
       ].concat(multipleHtmlPlugins)
