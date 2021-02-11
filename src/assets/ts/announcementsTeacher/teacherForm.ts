@@ -1,6 +1,7 @@
-export default function createForm() {
+export default function createAnnouncementForm() {
     const form = document.createElement('form')
     form.setAttribute('method', 'post')
+    form.setAttribute('class', 'teacherForm')
     //form.setAttribute('action', 'something')
     const type = document.createElement('select')
     const optionArr = ['Please select type','Important', 'Normal', 'Exam']
@@ -22,7 +23,6 @@ export default function createForm() {
     //type.setAttribute('id', 'typeSelect')
     type.addEventListener('change', function(){
         if (this.value === 'important') {
-            console.log(form)
             form.removeChild(form.childNodes[1])
             form.appendChild(updateForm('important'))
         }

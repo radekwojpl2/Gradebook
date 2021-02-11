@@ -1,4 +1,10 @@
-console.log('siemano kolano')
-import createFunction from './announcementsTeacher/teacherForm'
-const teacherFormDiv = document.querySelector('.teacherForm')
-teacherFormDiv?.appendChild(createFunction())
+import submitForm from './announcementsTeacher/submitForm'
+import createAnnouncementForm from './announcementsTeacher/teacherForm'
+import submitAnnouncementForm from './announcementsTeacher/submitForm'
+
+const teacherFormDiv = document.querySelector('.teacherFormContainer')
+const form = createAnnouncementForm()
+
+teacherFormDiv?.appendChild(form)
+
+form?.addEventListener('submit',submitAnnouncementForm)
