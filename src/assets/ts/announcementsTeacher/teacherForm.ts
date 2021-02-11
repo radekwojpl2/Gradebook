@@ -4,6 +4,7 @@ export default function createAnnouncementForm() {
     form.setAttribute('class', 'teacherForm')
     //form.setAttribute('action', 'something')
     const type = document.createElement('select')
+    type.setAttribute('class', 'teacherForm__select')
     const optionArr = ['Please select type','Important', 'Normal', 'Exam']
     optionArr.forEach((item) => {
         const opt = document.createElement('option')
@@ -15,6 +16,7 @@ export default function createAnnouncementForm() {
     let wrapper = document.createElement('div')
     wrapper.setAttribute('id', 'wrapper')
     const defaultText = document.createElement('p')
+    defaultText.setAttribute('class', 'teacherForm__defaultText')
     defaultText.innerHTML = 'Please select the type of announcement'
     wrapper.appendChild(defaultText)
     form.appendChild(type)
@@ -44,27 +46,31 @@ export default function createAnnouncementForm() {
         const wrapper = document.createElement('div')
         if (condition == 'selectType') {
             const defaultText = document.createElement('p')
+            defaultText.setAttribute('class', 'teacherForm__defaultText')
             defaultText.innerHTML = 'Please select the type of announcement'
             wrapper.appendChild(defaultText)
             return wrapper
         }
         else {
             const name = document.createElement('input')
-                name.setAttribute('type', 'text')
-                name.setAttribute('name', 'name')
-                name.setAttribute('placeholder', 'Your full name')
+            name.setAttribute('type', 'text')
+            name.setAttribute('placeholder', 'Your full name')
+            name.setAttribute('class', 'teacherForm__inputName')
+
+            const title = document.createElement('input')
+            title.setAttribute('type', 'text')
+            title.setAttribute('placeholder', 'Your title of announcement')
+            title.setAttribute('class', 'teacherForm__inputTitle')
             
-                const title = document.createElement('input')
-                title.setAttribute('type', 'text')
-                title.setAttribute('placeholder', 'Your title of announcement')
-                title.setAttribute('name', 'title')
-                
-                const message = document.createElement('textarea')
-                message.setAttribute('placeholder', 'text here')
-                
-                const submit = document.createElement('input')
-                submit.setAttribute('type', 'submit')
-                submit.setAttribute('value', 'Submit')
+            const message = document.createElement('textarea')
+            message.setAttribute('placeholder', 'text here')
+            message.setAttribute('class', 'teacherForm__message')    
+
+            const submit = document.createElement('input')
+            submit.setAttribute('type', 'submit')
+            submit.setAttribute('value', 'Submit')
+            submit.setAttribute('class', 'teacherForm__submit')
+            
             wrapper.setAttribute('id', 'wrapper')
 
             wrapper.appendChild(name)
