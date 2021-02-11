@@ -8,7 +8,8 @@ export default function createAnnouncementForm() {
     const optionArr = ['Please select type','Important', 'Normal', 'Exam']
     optionArr.forEach((item) => {
         const opt = document.createElement('option')
-        opt.innerHTML = item
+        opt.setAttribute('class', 'teacherForm__select__option')
+        opt.innerHTML = item 
         opt.setAttribute('value', `${item.toLowerCase()}`)
         type.appendChild(opt)
     })
@@ -76,13 +77,17 @@ export default function createAnnouncementForm() {
             wrapper.appendChild(name)
             wrapper.appendChild(title)
             wrapper.appendChild(message)
-            wrapper.appendChild(submit)
+
             if (condition === 'exam') {
                 const date = document.createElement('input')
                 date.setAttribute('type', 'date')
                 date.setAttribute('placeholder', 'Enter the date')
+                date.setAttribute('class', 'teacherForm__inputDate')
                 wrapper.appendChild(date)
             }
+
+            wrapper.appendChild(submit)
+            
             return wrapper
         }
     }
