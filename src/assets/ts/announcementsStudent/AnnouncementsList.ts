@@ -94,7 +94,7 @@ export class AnnouncementsList {
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
                 type.style.color = "blue";
-                const date = createElementWithInnerText('p', `Date: ${announcement.date}`,'exam-date')
+                const date = createElementWithInnerText('p', `EXAM DATE: ${announcement.date}`,'exam-date')
                 appendChildrenToElement(announcementDiv, date)
             } else if (announcement.type === "important") {
                 type.style.color = "red";

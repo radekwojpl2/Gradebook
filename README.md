@@ -102,6 +102,14 @@ import {TopPanel} from './TopPanel'
 TopPanel()
 ```
 
+### Panel Announcements - Student
+
+Panel z ogłoszeniami jest tworzony dynamicznie. Sekcja jest tworzona za pomocą funkcji createAnnouncementsSection. Zawiera przyciski funkcyjne oraz kontener z ogłoszeniami.
+
+Ogłoszenia są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios.
+
+Domyślnie zostają wyświetlone wszystkie ogłoszenia w kolejności od najnowszego. Istnieje możliwość filtrowania ogłoszeń w zależności od rodzaju (normal, important, exam). Można również sortować ogłoszenia po dacie oraz stopniu ważności.
+
 # CodersCamp 2020 - Projekt TypeScript
 
 **CodersCamp (coderscamp.edu.pl) - Największy otwarty kurs programowania webowego**
