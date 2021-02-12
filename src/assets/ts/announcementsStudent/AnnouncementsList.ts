@@ -1,7 +1,14 @@
+import { normalize } from 'path';
 import axios from '../../../axios';
 import {appendChildrenToElement, createElementWithClasses, createElementWithInnerText} from '../GlobalFunctions'
 import {Announcement} from './Announcement'
 import {ExamAnnouncement} from './ExamAnnouncement'
+
+enum AnnouncementType {
+    normal,
+    exam,
+    important
+}
 
 export class AnnouncementsList {
     private announcementsList: Announcement[];
@@ -10,6 +17,7 @@ export class AnnouncementsList {
     private examsBtn: HTMLInputElement | null;
     private normalBtn: HTMLInputElement | null;
     private importantBtn: HTMLInputElement | null;
+    private sortOption: HTMLElement | null
     constructor() {
         this.announcementsList = []
         this.getAnnouncements()
@@ -19,13 +27,17 @@ export class AnnouncementsList {
         this.examsBtn = document.querySelector('#exams')
         this.normalBtn = document.querySelector('#normal')
         this.importantBtn = document.querySelector('#important')
+        this.sortOption = document.querySelector('#sort-input')
+
+        console.log(this.sortOption)
 
         this.allBtn!.checked = true;
 
-        this.allBtn?.addEventListener('change', this.filterList.bind(this, "all"))
-        this.examsBtn?.addEventListener('change', this.filterList.bind(this, "exam"))
-        this.normalBtn?.addEventListener('change', this.filterList.bind(this, "normal"))
-        this.importantBtn?.addEventListener('change', this.filterList.bind(this, "important"))
+        this.allBtn?.addEventListener('click', this.filterList.bind(this, "all"))
+        this.examsBtn?.addEventListener('click', this.filterList.bind(this, "exam"))
+        this.normalBtn?.addEventListener('click', this.filterList.bind(this, "normal"))
+        this.importantBtn?.addEventListener('click', this.filterList.bind(this, "important"))
+        this.sortOption?.addEventListener('change', (e) => this.sortAnnouncements((e.target as any).value))
 
     }
 
@@ -53,13 +65,13 @@ export class AnnouncementsList {
 
     filterList(type: String) {
         if (type === "exam") {
-            const filtered = this.getExamType()
+            const filtered = this.announcementsList.filter( el => el.type === "exam")
             this.renderList(filtered)
         } else if (type === "important") {
-            const filtered = this.getImportantType()
+            const filtered = this.announcementsList.filter( el => el.type === "important")
             this.renderList(filtered)
         } else if (type === "normal") {
-            const filtered = this.getNormalType()
+            const filtered = this.announcementsList.filter( el => el.type === "normal")
             this.renderList(filtered)
         } else if (type === "all") {
             this.renderList(this.announcementsList)
@@ -67,28 +79,15 @@ export class AnnouncementsList {
         
     }
 
-    getExamType() {
-        const filtered = this.announcementsList.filter( el => el.type === "exam")
-        return filtered
-    }
-
-    getImportantType() {
-        const filtered = this.announcementsList.filter( el => el.type === "important")
-        return filtered
-    }
-
-    getNormalType() {
-        const filtered = this.announcementsList.filter( el => el.type === "normal")
-        return filtered
-    }
-
     renderList(list: Announcement[]) {
         this.announcementsContainer.textContent = ""
+        // const sorted = this.sortByNewest(list)
         list.forEach( announcement => {
             const announcementDiv = createElementWithClasses('div', 'announcement')
             const title = createElementWithInnerText('h2', `${announcement.title}`,'announcement-title')
             const message = createElementWithInnerText('p', `${announcement.message}`,'announcement-description')
             const type = createElementWithInnerText('p', announcement.type.toUpperCase(), 'announcement-type')
+            const created = createElementWithInnerText('p', `${new Date(+announcement.timestamp).getDay()}/${new Date(+announcement.timestamp).getMonth()}/${new Date(+announcement.timestamp).getFullYear()}`, 'announcement-created' )
 
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
@@ -98,8 +97,44 @@ export class AnnouncementsList {
             } else if (announcement.type === "important") {
                 type.style.color = "red";
             }
-            appendChildrenToElement(announcementDiv, message, type)
+            appendChildrenToElement(announcementDiv, message, type, created)
             this.announcementsContainer.appendChild(announcementDiv)
         })    
+    }
+
+    sortAnnouncements(type: String) {
+        this.allBtn!.checked = true;
+        console.log(type)
+        if (type === "Sort by newest") {
+            console.log('n', this.announcementsList)
+            const sorted = this.sortByNewest(this.announcementsList)
+            this.renderList(sorted)
+        } else if (type === "Sort by oldest") {
+            console.log('o')
+            this.renderList(this.sortByOldest(this.announcementsList))
+        }
+    }
+
+    sortByNewest(list: Announcement[]) {
+        const sorted = list.sort( (a, b) => {
+                return +b.timestamp - +a.timestamp
+        })
+        return sorted
+    }
+
+    sortByOldest(list: Announcement[]) {
+        const sorted = list.sort( (a, b) => {
+            return +a.timestamp - +b.timestamp
+        })
+        return sorted
+    }
+
+    sortByMostImportant(list: Announcement[]) {
+        // const sorted = list.sort( (a, b) => {
+        //     let aEnum = 0
+        //     if (a.type === AnnouncementType[0]) {
+        //         aEnum =
+        //     }
+        // })
     }
 }
