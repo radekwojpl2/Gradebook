@@ -57,15 +57,18 @@ export default function createAnnouncementForm() {
             name.setAttribute('type', 'text')
             name.setAttribute('placeholder', 'Your full name')
             name.setAttribute('class', 'teacherForm__inputName')
+            name.setAttribute('required', 'true')
 
             const title = document.createElement('input')
             title.setAttribute('type', 'text')
             title.setAttribute('placeholder', 'Your title of announcement')
             title.setAttribute('class', 'teacherForm__inputTitle')
-            
+            title.setAttribute('required', 'true')
+
             const message = document.createElement('textarea')
             message.setAttribute('placeholder', 'text here')
             message.setAttribute('class', 'teacherForm__message')    
+            message.setAttribute('required', 'true')
 
             const submit = document.createElement('input')
             submit.setAttribute('type', 'submit')
@@ -83,6 +86,7 @@ export default function createAnnouncementForm() {
                 date.setAttribute('type', 'date')
                 date.setAttribute('placeholder', 'Enter the date')
                 date.setAttribute('class', 'teacherForm__inputDate')
+                date.setAttribute('required', 'true')
                 wrapper.appendChild(date)
             }
 
