@@ -4,20 +4,29 @@ import {Announcement} from './Announcement'
 import {ExamAnnouncement} from './ExamAnnouncement'
 
 export class AnnouncementsList {
-    announcementsList: Announcement[];
-    announcementsContainer: Element
+    private announcementsList: Announcement[];
+    private announcementsContainer: Element;
+    private allBtn: HTMLInputElement | null;
+    private examsBtn: HTMLInputElement | null;
+    private normalBtn: HTMLInputElement | null;
+    private importantBtn: HTMLInputElement | null;
     constructor() {
         this.announcementsList = []
         this.getAnnouncements()
         this.announcementsContainer = document.querySelector('.announcements-container')!
 
-        const showExamsBtn = document.querySelector('.show-exams')
-        const showGeneralBtn = document.querySelector('.show-general')
-        const showAllBtn = document.querySelector('.show-all')
+        this.allBtn = document.querySelector('#all')
+        this.examsBtn = document.querySelector('#exams')
+        this.normalBtn = document.querySelector('#normal')
+        this.importantBtn = document.querySelector('#important')
 
-        showExamsBtn!.addEventListener('click', this.filterList.bind(this, 'exam'))
-        showGeneralBtn!.addEventListener('click', this.filterList.bind(this, 'general'))
-        showAllBtn!.addEventListener('click', this.renderList.bind(this, this.announcementsList))
+        this.allBtn!.checked = true;
+
+        this.allBtn?.addEventListener('change', this.filterList.bind(this, "all"))
+        this.examsBtn?.addEventListener('change', this.filterList.bind(this, "exam"))
+        this.normalBtn?.addEventListener('change', this.filterList.bind(this, "normal"))
+        this.importantBtn?.addEventListener('change', this.filterList.bind(this, "important"))
+
     }
 
     getAnnouncements() {
@@ -52,6 +61,8 @@ export class AnnouncementsList {
         } else if (type === "normal") {
             const filtered = this.getNormalType()
             this.renderList(filtered)
+        } else if (type === "all") {
+            this.renderList(this.announcementsList)
         }
         
     }
