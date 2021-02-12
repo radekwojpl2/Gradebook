@@ -12,4 +12,10 @@ export class Announcement {
         this.type = type,
         this.name = name
     }
+
+    getImportance() {
+        if(this.type === "important") return 3
+        else if (this.type === "exam") return 2
+        else return 1
+    }
 }

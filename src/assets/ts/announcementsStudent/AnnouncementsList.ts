@@ -1,14 +1,7 @@
-import { normalize } from 'path';
 import axios from '../../../axios';
 import {appendChildrenToElement, createElementWithClasses, createElementWithInnerText} from '../GlobalFunctions'
 import {Announcement} from './Announcement'
 import {ExamAnnouncement} from './ExamAnnouncement'
-
-enum AnnouncementType {
-    normal,
-    exam,
-    important
-}
 
 export class AnnouncementsList {
     private announcementsList: Announcement[];
@@ -55,7 +48,7 @@ export class AnnouncementsList {
                         const examAnnouncement = new Announcement(data[ann].title, data[ann].message, data[ann].timestamp, data[ann].type, data[ann].name)
                         this.announcementsList.push(examAnnouncement)
                     }
-                    this.renderList(this.announcementsList) 
+                    this.renderList(this.sortByNewest(this.announcementsList)) 
                 }
             })
             .catch( error => {
@@ -65,15 +58,19 @@ export class AnnouncementsList {
 
     filterList(type: String) {
         if (type === "exam") {
+            this.sortOption!.style.display = "none"
             const filtered = this.announcementsList.filter( el => el.type === "exam")
             this.renderList(filtered)
         } else if (type === "important") {
+            this.sortOption!.style.display = "none"
             const filtered = this.announcementsList.filter( el => el.type === "important")
             this.renderList(filtered)
         } else if (type === "normal") {
+            this.sortOption!.style.display = "none"
             const filtered = this.announcementsList.filter( el => el.type === "normal")
             this.renderList(filtered)
         } else if (type === "all") {
+            this.sortOption!.style.display = "block"
             this.renderList(this.announcementsList)
         }
         
@@ -81,13 +78,12 @@ export class AnnouncementsList {
 
     renderList(list: Announcement[]) {
         this.announcementsContainer.textContent = ""
-        // const sorted = this.sortByNewest(list)
         list.forEach( announcement => {
             const announcementDiv = createElementWithClasses('div', 'announcement')
-            const title = createElementWithInnerText('h2', `${announcement.title}`,'announcement-title')
-            const message = createElementWithInnerText('p', `${announcement.message}`,'announcement-description')
-            const type = createElementWithInnerText('p', announcement.type.toUpperCase(), 'announcement-type')
-            const created = createElementWithInnerText('p', `${new Date(+announcement.timestamp).getDay()}/${new Date(+announcement.timestamp).getMonth()}/${new Date(+announcement.timestamp).getFullYear()}`, 'announcement-created' )
+            const title = createElementWithInnerText('h2', (announcement.title as string),'announcement-title')
+            const message = createElementWithInnerText('p', (announcement.message as string),'announcement-description')
+            const type = createElementWithInnerText('p', (announcement.type as string).toUpperCase(), 'announcement-type')
+            const created = createElementWithInnerText('p', `${new Date(announcement.timestamp as number).getDate()}/${new Date(announcement.timestamp as number).getMonth() + 1}/${new Date(announcement.timestamp as number).getFullYear()}`, 'announcement-created' )
 
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
@@ -103,38 +99,39 @@ export class AnnouncementsList {
     }
 
     sortAnnouncements(type: String) {
-        this.allBtn!.checked = true;
-        console.log(type)
         if (type === "Sort by newest") {
-            console.log('n', this.announcementsList)
-            const sorted = this.sortByNewest(this.announcementsList)
-            this.renderList(sorted)
+            this.renderList(this.sortByNewest(this.announcementsList))
         } else if (type === "Sort by oldest") {
-            console.log('o')
             this.renderList(this.sortByOldest(this.announcementsList))
+        } else if (type === "Sort by most important") {
+            this.renderList(this.sortByMostImportant(this.announcementsList))
+        } else if (type === "Sort by least important") {
+            this.renderList(this.sortByLeastImportant(this.announcementsList))
         }
     }
 
     sortByNewest(list: Announcement[]) {
-        const sorted = list.sort( (a, b) => {
-                return +b.timestamp - +a.timestamp
+        return list.sort( (a, b) => {
+                return (b.timestamp as number) - (a.timestamp as number)
         })
-        return sorted
     }
 
     sortByOldest(list: Announcement[]) {
-        const sorted = list.sort( (a, b) => {
-            return +a.timestamp - +b.timestamp
+        return list.sort( (a, b) => {
+            return (a.timestamp as number) - (b.timestamp as number)
         })
-        return sorted
     }
 
     sortByMostImportant(list: Announcement[]) {
-        // const sorted = list.sort( (a, b) => {
-        //     let aEnum = 0
-        //     if (a.type === AnnouncementType[0]) {
-        //         aEnum =
-        //     }
-        // })
+        return list.sort( (a, b) => {
+            return b.getImportance() - a.getImportance()
+         })
+    }
+
+    sortByLeastImportant(list: Announcement[]) {
+        return list.sort( (a, b) => {
+            return a.getImportance() - b.getImportance()
+         })
+
     }
 }

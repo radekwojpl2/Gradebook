@@ -1,15 +1,7 @@
 import {createElementWithClasses} from '../GlobalFunctions'
+import {AnnouncementsList} from './AnnouncementsList'
 
 export const createAnnouncementsSections = () => {
-    // const textContent = `
-    //         <button class="show-all">Show All</button>
-    //         <button class="show-exams">Exams</button>
-    //         <button class="show-general">General</button>
-    //         <select name="sort" id="sort-input">
-    //             <option value="newest">From the newest</option>
-    //             <option value="oldest">From the oldest</option> 
-    //         </select>
-    //         `
     const textContent = `
             <div>
             <input type="radio" name="type" id="all" value="all">
@@ -30,6 +22,7 @@ export const createAnnouncementsSections = () => {
             <input type="radio" name="type" id="exams" value="exams">
             <label for="exams">Exams</label>
             </div>
+
             <select name="sort" id="sort-input">
                 <option data-key="newest">Sort by newest</option>
                 <option data-key="oldest">Sort by oldest</option>
@@ -43,4 +36,6 @@ export const createAnnouncementsSections = () => {
     const announcementsSection = document.querySelector('.announcements-section')!
     announcementsSection.appendChild(announcementsButtonsSection)
     announcementsSection.appendChild(announcementsContainer)
+
+    const ann = new AnnouncementsList()
 }
