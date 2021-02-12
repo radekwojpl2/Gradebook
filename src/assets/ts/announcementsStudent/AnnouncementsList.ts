@@ -26,20 +26,19 @@ export class AnnouncementsList {
             .then( response => {
                 const data = response.data
                 console.log(data)
-                for (let i = 0; Object.keys(data).length; i++) {
-                    if (data[i].type === "exam") {
-                        const examAnnouncement = new ExamAnnouncement(data[i].title, data[i].content, data[i].timestamp, data[i].type, data[i].date, data[i].topic)
+                for(let ann in data) {
+                    if (data[ann].type === "exam") {
+                        const examAnnouncement = new ExamAnnouncement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type, data[ann].date, data[ann].topic)
                         this.announcementsList.push(examAnnouncement)
-                    } else if (data[i].type === "general") {
-                        const examAnnouncement = new Announcement(data[i].title, data[i].content, data[i].timestamp, data[i].type)
+                    } else if (data[ann].type === "general") {
+                        const examAnnouncement = new Announcement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type)
                         this.announcementsList.push(examAnnouncement)
                     }
                     this.renderList(this.announcementsList) 
                 }
             })
             .catch( error => {
-                console.log(error)
-                // throw new Error(error)
+                throw new Error(error)
             })
     }
 
