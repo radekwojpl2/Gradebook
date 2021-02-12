@@ -1,13 +1,15 @@
 export class Announcement {
     public title: String;
-    public content: String;
+    public message: String;
     public timestamp: Number;
     public type: String;
+    public name: String
 
-    constructor(title: String, content: String, timestamp: Number, type: String) {
+    constructor(title: String, message: String, timestamp: Number, type: String, name: String) {
         this.title = title,
-        this.content = content,
+        this.message = message,
         this.timestamp = timestamp,
-        this.type = type
+        this.type = type,
+        this.name = name
     }
 }

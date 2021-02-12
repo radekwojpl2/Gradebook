@@ -28,10 +28,10 @@ export class AnnouncementsList {
                 console.log(data)
                 for(let ann in data) {
                     if (data[ann].type === "exam") {
-                        const examAnnouncement = new ExamAnnouncement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type, data[ann].date, data[ann].topic)
+                        const examAnnouncement = new ExamAnnouncement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type,  data[ann].name, data[ann].date)
                         this.announcementsList.push(examAnnouncement)
                     } else if (data[ann].type === "general") {
-                        const examAnnouncement = new Announcement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type)
+                        const examAnnouncement = new Announcement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type, data[ann].name)
                         this.announcementsList.push(examAnnouncement)
                     }
                     this.renderList(this.announcementsList) 
@@ -68,15 +68,14 @@ export class AnnouncementsList {
         list.forEach( announcement => {
             const announcementDiv = createElementWithClasses('div', 'announcement')
             const title = createElementWithInnerText('h2', `${announcement.title}`,'announcement-title')
-            const content = createElementWithInnerText('p', `${announcement.content}`,'announcement-description')
+            const message = createElementWithInnerText('p', `${announcement.message}`,'announcement-description')
 
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
                 const date = createElementWithInnerText('p', `Date: ${announcement.date}`,'exam-date')
-                const topic = createElementWithInnerText('p', `Topic: ${announcement.topic}`,'exam-topic')
-                appendChildrenToElement(announcementDiv, date, topic)
+                appendChildrenToElement(announcementDiv, date)
             }
-            appendChildrenToElement(announcementDiv, content)
+            appendChildrenToElement(announcementDiv, message)
             this.announcementsContainer.appendChild(announcementDiv)
         })    
     }
