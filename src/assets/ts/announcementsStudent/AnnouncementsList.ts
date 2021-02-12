@@ -28,10 +28,10 @@ export class AnnouncementsList {
                 console.log(data)
                 for(let ann in data) {
                     if (data[ann].type === "exam") {
-                        const examAnnouncement = new ExamAnnouncement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type,  data[ann].name, data[ann].date)
+                        const examAnnouncement = new ExamAnnouncement(data[ann].title, data[ann].message, data[ann].timestamp, data[ann].type,  data[ann].name, data[ann].date)
                         this.announcementsList.push(examAnnouncement)
-                    } else if (data[ann].type === "general") {
-                        const examAnnouncement = new Announcement(data[ann].title, data[ann].content, data[ann].timestamp, data[ann].type, data[ann].name)
+                    } else if (data[ann].type === "normal" || data[ann].type === "important") {
+                        const examAnnouncement = new Announcement(data[ann].title, data[ann].message, data[ann].timestamp, data[ann].type, data[ann].name)
                         this.announcementsList.push(examAnnouncement)
                     }
                     this.renderList(this.announcementsList) 
@@ -46,8 +46,11 @@ export class AnnouncementsList {
         if (type === "exam") {
             const filtered = this.getExamType()
             this.renderList(filtered)
-        } else if (type === "general") {
-            const filtered = this.getGeneralType()
+        } else if (type === "important") {
+            const filtered = this.getImportantType()
+            this.renderList(filtered)
+        } else if (type === "normal") {
+            const filtered = this.getNormalType()
             this.renderList(filtered)
         }
         
@@ -58,8 +61,13 @@ export class AnnouncementsList {
         return filtered
     }
 
-    getGeneralType() {
-        const filtered = this.announcementsList.filter( el => el.type === "general")
+    getImportantType() {
+        const filtered = this.announcementsList.filter( el => el.type === "important")
+        return filtered
+    }
+
+    getNormalType() {
+        const filtered = this.announcementsList.filter( el => el.type === "normal")
         return filtered
     }
 
@@ -69,13 +77,17 @@ export class AnnouncementsList {
             const announcementDiv = createElementWithClasses('div', 'announcement')
             const title = createElementWithInnerText('h2', `${announcement.title}`,'announcement-title')
             const message = createElementWithInnerText('p', `${announcement.message}`,'announcement-description')
+            const type = createElementWithInnerText('p', announcement.type.toUpperCase(), 'announcement-type')
 
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
+                type.style.color = "blue";
                 const date = createElementWithInnerText('p', `Date: ${announcement.date}`,'exam-date')
                 appendChildrenToElement(announcementDiv, date)
+            } else if (announcement.type === "important") {
+                type.style.color = "red";
             }
-            appendChildrenToElement(announcementDiv, message)
+            appendChildrenToElement(announcementDiv, message, type)
             this.announcementsContainer.appendChild(announcementDiv)
         })    
     }
