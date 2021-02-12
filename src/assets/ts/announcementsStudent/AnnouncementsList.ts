@@ -11,9 +11,9 @@ export class AnnouncementsList {
     private normalBtn: HTMLInputElement | null;
     private importantBtn: HTMLInputElement | null;
     private sortOption: HTMLElement | null
+
     constructor() {
         this.announcementsList = []
-        this.getAnnouncements()
         this.announcementsContainer = document.querySelector('.announcements-container')!
 
         this.allBtn = document.querySelector('#all')
@@ -21,8 +21,6 @@ export class AnnouncementsList {
         this.normalBtn = document.querySelector('#normal')
         this.importantBtn = document.querySelector('#important')
         this.sortOption = document.querySelector('#sort-input')
-
-        console.log(this.sortOption)
 
         this.allBtn!.checked = true;
 
@@ -32,6 +30,7 @@ export class AnnouncementsList {
         this.importantBtn?.addEventListener('click', this.filterList.bind(this, "important"))
         this.sortOption?.addEventListener('change', (e) => this.sortAnnouncements((e.target as any).value))
 
+        this.getAnnouncements()
     }
 
     getAnnouncements() {
@@ -83,7 +82,12 @@ export class AnnouncementsList {
             const title = createElementWithInnerText('h2', (announcement.title as string),'announcement-title')
             const message = createElementWithInnerText('p', (announcement.message as string),'announcement-description')
             const type = createElementWithInnerText('p', (announcement.type as string).toUpperCase(), 'announcement-type')
-            const created = createElementWithInnerText('p', `${new Date(announcement.timestamp as number).getDate()}/${new Date(announcement.timestamp as number).getMonth() + 1}/${new Date(announcement.timestamp as number).getFullYear()}`, 'announcement-created' )
+            const author = createElementWithInnerText('p', (announcement.name as string), 'announcement-author')
+            const creationDate = new Date(announcement.timestamp as number)
+            const creationDateDay = creationDate.getDate() < 10 ? '0' + creationDate.getDate() : creationDate.getDate();
+            const creationDateMonth = creationDate.getMonth() + 1 < 10 ? "0" + (creationDate.getMonth() + 1) : creationDate.getMonth() + 1
+            const creationDateYear = new Date(announcement.timestamp as number).getFullYear()
+            const created = createElementWithInnerText('p', `${creationDateDay}/${creationDateMonth}/${creationDateYear}`, 'announcement-created' )
 
             appendChildrenToElement(announcementDiv, title)
             if (announcement instanceof ExamAnnouncement) {
@@ -93,7 +97,8 @@ export class AnnouncementsList {
             } else if (announcement.type === "important") {
                 type.style.color = "red";
             }
-            appendChildrenToElement(announcementDiv, message, type, created)
+            
+            appendChildrenToElement(announcementDiv, message, type, created, author)
             this.announcementsContainer.appendChild(announcementDiv)
         })    
     }
@@ -112,7 +117,7 @@ export class AnnouncementsList {
 
     sortByNewest(list: Announcement[]) {
         return list.sort( (a, b) => {
-                return (b.timestamp as number) - (a.timestamp as number)
+            return (b.timestamp as number) - (a.timestamp as number)
         })
     }
 
@@ -125,13 +130,12 @@ export class AnnouncementsList {
     sortByMostImportant(list: Announcement[]) {
         return list.sort( (a, b) => {
             return b.getImportance() - a.getImportance()
-         })
+        })
     }
 
     sortByLeastImportant(list: Announcement[]) {
         return list.sort( (a, b) => {
             return a.getImportance() - b.getImportance()
-         })
-
+        })
     }
 }

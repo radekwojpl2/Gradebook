@@ -66,6 +66,11 @@ h1 {
   line-height: 1.5;
 }
 
+.announcement-author {
+  width: 100%;
+  text-align: right;
+}
+
 .announcement-type {
   position: absolute;
   top: 0;
