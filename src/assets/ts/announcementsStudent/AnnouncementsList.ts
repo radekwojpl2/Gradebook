@@ -22,15 +22,17 @@ export class AnnouncementsList {
         this.importantBtn = document.querySelector('#important')
         this.sortOption = document.querySelector('#sort-input')
 
-        this.allBtn!.checked = true;
+        document.addEventListener('DOMContentLoaded', () => {
+            this.allBtn!.checked = true;
 
-        this.allBtn?.addEventListener('click', this.filterList.bind(this, "all"))
-        this.examsBtn?.addEventListener('click', this.filterList.bind(this, "exam"))
-        this.normalBtn?.addEventListener('click', this.filterList.bind(this, "normal"))
-        this.importantBtn?.addEventListener('click', this.filterList.bind(this, "important"))
-        this.sortOption?.addEventListener('change', (e) => this.sortAnnouncements((e.target as any).value))
-
-        this.getAnnouncements()
+            this.allBtn?.addEventListener('click', this.filterList.bind(this, "all"))
+            this.examsBtn?.addEventListener('click', this.filterList.bind(this, "exam"))
+            this.normalBtn?.addEventListener('click', this.filterList.bind(this, "normal"))
+            this.importantBtn?.addEventListener('click', this.filterList.bind(this, "important"))
+            this.sortOption?.addEventListener('change', (e) => this.sortAnnouncements((e.target as any).value))
+    
+            this.getAnnouncements() 
+        }) 
     }
 
     getAnnouncements() {

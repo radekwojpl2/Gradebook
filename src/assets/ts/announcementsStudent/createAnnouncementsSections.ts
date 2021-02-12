@@ -4,23 +4,23 @@ import {AnnouncementsList} from './AnnouncementsList'
 export const createAnnouncementsSections = () => {
     const textContent = `
             <div>
-            <input type="radio" name="type" id="all" value="all">
-            <label for="all">Show all</label>
+                <input type="radio" name="type" id="all" value="all">
+                <label for="all">Show all</label>
             </div>
 
             <div>
-            <input type="radio" name="type" id="normal" value="normal">
-            <label for="normal">Normal</label>
+                <input type="radio" name="type" id="normal" value="normal">
+                <label for="normal">Normal</label>
             </div>
         
             <div>
-            <input type="radio" name="type" id="important" value="important">
-            <label for="important">Important</label>
+                <input type="radio" name="type" id="important" value="important">
+                <label for="important">Important</label>
             </div>
         
             <div>
-            <input type="radio" name="type" id="exams" value="exams">
-            <label for="exams">Exams</label>
+                <input type="radio" name="type" id="exams" value="exams">
+                <label for="exams">Exams</label>
             </div>
 
             <select name="sort" id="sort-input">
