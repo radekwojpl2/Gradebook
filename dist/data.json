@@ -103,7 +103,7 @@
             "holiday": "Valetine's Day",
             "timestamp": 1613260800},
         {"id":2,
-            "subject": "New Year",
+            "holiday": "New Year",
             "timestamp": 1609459200}
         ]
 }
