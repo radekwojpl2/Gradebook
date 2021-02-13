@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {Event, EventsData} from './generalData';
-import CalendarEvents from './/calendarEvents';
+import CalendarEvents from './calendarEvents';
 
 export const Calendar = () => {
     axios.get<{exams: {id: string, topic:string, subject:string, timestamp:string}[],
