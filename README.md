@@ -101,7 +101,9 @@ TopPanel()
 ### MainPage
 
 Na stronie głównej użyty został pakiet [Chart.js](https://www.chartjs.org/) w celu zaimplementowania wykresów. Na podstawie tego pakietu stworzona została klasa Charts, która ma na celu generowanie wyłącznie jednego z dwóch typów wykresu:
+
 - polarArea
+<<<<<<< HEAD
 ![polarArea](/dist/assets/static/wykres2.PNG)
 - radar
 ![radar](/dist/assets/static/wykres1.PNG)
@@ -109,7 +111,17 @@ Na stronie głównej użyty został pakiet [Chart.js](https://www.chartjs.org/) 
 Na stronie znajduje się również kalendarz, który został zbudowany przy użyciu pakietu [Moment.js](https://momentjs.com/). 
 ![calendar](/dist/assets/static/kalendarz.PNG)
 
+
 Zmiana wyświetlango miesiąca możliwa jest po naciśnięciu strzałek. Na kalendarzu zostały zaznaczone dwa rodzaje zdarzeń:
+
 - egzaminy, testy (kolor różowy),
 - święta (kolor niebieski).
-Po najechaniu rodzaj wydarzenia wyświetla się poniżej kalendarza.
+  Po najechaniu rodzaj wydarzenia wyświetla się poniżej kalendarza.
+
+### Panel Announcements - Student
+
+Panel z ogłoszeniami jest tworzony dynamicznie. Sekcja jest tworzona za pomocą funkcji createAnnouncementsSection. Zawiera przyciski funkcyjne oraz kontener z ogłoszeniami.
+
+Ogłoszenia są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios.
+
+Domyślnie zostają wyświetlone wszystkie ogłoszenia w kolejności od najnowszego. Istnieje możliwość filtrowania ogłoszeń w zależności od rodzaju (normal, important, exam). Można również sortować ogłoszenia po dacie oraz stopniu ważności.
