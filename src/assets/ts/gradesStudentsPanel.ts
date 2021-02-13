@@ -58,8 +58,8 @@ function outputStudents(users : Object[]) : void {
 
 function outputGrades(id : number | boolean, isSecret : boolean) : void {
     var ulStudentList : HTMLElement | any = document.querySelector("#studentGrades");
-    var outputList : string = ""
-    var outputGrades : string = ""
+    var outputList : string = "";
+    var outputGrades : string = "";
     var gradesArray : Array<GradesArrayInterface> = [
         { subject: "math", grades: [] },
         { subject: "english", grades: [] },
@@ -76,22 +76,22 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
             if(element.user_id  === id) {
                 gradesArray.forEach((el) => {              
                     if(el.subject.toLowerCase() == element.subject) {
-                        el.grades.push(element.grade)
+                        el.grades.push(element.grade);
                     }
                 })
             }
         } else {
-            outputList = "Podaj dobry secret"
+            outputList = "Enter valid secret";
         }
     });
 
     if(isSecret) {
         gradesArray.forEach((object) => {
             object.grades.forEach ((grade) => {
-                outputGrades += `<li>${grade}</li>`
+                outputGrades += `<li>${grade}</li>`;
             })
             outputList += `<span>${object.subject}: <ul id="gradesList">${outputGrades}</ul></span> `;
-            outputGrades = ""
+            outputGrades = "";
         })
     }
 

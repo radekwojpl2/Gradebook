@@ -6,7 +6,7 @@ export const subPages = [
         },
         {
             subpage: 'Grades',
-            student: 'gradesStudent.html',
+            student: 'gradesStudentsPanel.html',
             teacher: 'gradesTeacher.html',
         }
     ]
