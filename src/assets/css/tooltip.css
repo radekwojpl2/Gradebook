@@ -1,0 +1,32 @@
+@import url('./styles.css');
+
+.tip {
+    visibility: hidden;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    padding: 4px 1px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    margin-top: 5px;
+    transition: opacity 0.4s;
+    box-sizing: border-box;
+    text-transform: uppercase;
+}
+
+.tip.active {
+    visibility: visible;
+    opacity: 1;
+    background-color: var(--first_main_color);
+}
+
+.exams .tip.active {
+    visibility: visible;
+    opacity: 1;
+    background-color:var(--second_main_color);
+    border-color: var(--second_main_color);
+}
+
+
