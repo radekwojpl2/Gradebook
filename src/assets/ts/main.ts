@@ -7,3 +7,4 @@ Charts();
 
 //create calendar and map events to it
 Calendar()
+
