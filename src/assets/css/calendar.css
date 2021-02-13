@@ -52,3 +52,9 @@
     color: var(--text_color);
     border: 3px var(--second_main_color) solid;
 }
+
+@media (max-width: 800px) { 
+    #calendar {
+        margin: 1rem auto
+    }
+}
