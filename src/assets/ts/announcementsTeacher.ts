@@ -1,6 +1,7 @@
 import createAnnouncementForm from './announcementsTeacher/teacherForm'
 import submitAnnouncementForm from './announcementsTeacher/submitAnnouncementForm'
 import instance from '../../axios'
+import '../css/announcementsTeacher.css'
 const teacherFormDiv = document.querySelector('.teacherFormContainer')
 const form = createAnnouncementForm()
 teacherFormDiv?.appendChild(form)
