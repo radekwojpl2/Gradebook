@@ -118,7 +118,7 @@ Zmiana wyświetlango miesiąca możliwa jest po naciśnięciu strzałek. Na kale
 
 ### Panel Announcements - Student
 
-![announcementsStudentPanel](/assets/static/announcementsStudent.jpg)
+![announcementsStudentPanel](/src/assets/static/announcementsStudent.jpg)
 
 Panel z ogłoszeniami jest tworzony dynamicznie. Sekcja jest tworzona za pomocą funkcji createAnnouncementsSection. Zawiera przyciski funkcyjne oraz kontener z ogłoszeniami.
 
