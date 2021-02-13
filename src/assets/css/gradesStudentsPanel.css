@@ -1,7 +1,73 @@
+main{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.title{
+    width: 100%;
+    height: 19vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3vh;
+}
 .students{
     width: 32%;
-    height: 80vh;
-    margin: .5%;
-    background-color: bisque;
-    float: left;
+    height: 70vh;
+    background-color:  #f2f2f2;
 }
+.students:nth-child(2)>h2, .students:nth-child(3)>h2{
+   text-align: center;
+    padding: 2vh;
+   margin-bottom: 4vh;
+   font-size: 4vh;
+   width:100%;
+   border-bottom: 1px solid black;
+}
+.students:nth-child(2)>ol>li{
+    font-size: 2.7vh;
+    padding: .5vh;
+}
+.gradesPanel{
+    text-align: center;
+}
+
+.gradesPanel > input{
+    width: 20vh;
+    height: 5vh;
+    margin: 2vh;
+}
+
+.gradesPanel > button{
+    width: 15vh;
+    height: 5vh;
+    margin: 2vh;
+    background: none;
+}
+#studentGrades, #studentGrades>span{
+    width: 100%;
+}
+#studentGrades>span, #studentGrades>span>li{
+    display: flex;
+}
+
+#studentGrades>span{
+    font-size: 2.5vh;
+    padding: .5vh;
+}
+
+#gradesList>ul{
+    text-decoration: none;
+    display: block;
+}
+#gradesList>li{
+    margin: .2vh;
+    background-color: white;
+    border:1px solid black;
+    padding: 1vh;
+    font-size: 2vh;
+    list-style-type: none;
+    display: inline;
+}
+

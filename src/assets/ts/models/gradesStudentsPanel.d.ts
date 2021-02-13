@@ -14,3 +14,8 @@ export interface GradesInterface {
     title: string, 
     user_id: number
 }
+
+export interface GradesArrayInterface {
+    subject: string, 
+    grades: number[]
+}
