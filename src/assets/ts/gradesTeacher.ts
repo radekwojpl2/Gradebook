@@ -3,6 +3,10 @@ import axios from '../../axios';
 import {User} from './User';
 import {Grade} from './Grade';
 import {Subject} from './Subject';
+import {TopPanel} from './TopPanel';
+
+//import menu
+TopPanel();
 
 
 let subjectList = document.getElementById("subjectList") as HTMLSelectElement;
