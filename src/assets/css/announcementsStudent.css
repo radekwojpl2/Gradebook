@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10% 0;
+}
+
+.announcements-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.announcements-buttons > button {
+  padding: 2.5% 5%;
+}
+
+#sort-input {
+  width: 50%;
+  padding: 1%;
+  margin-top: 25px;
+}
+
+.announcements-container {
+  width: 100%;
+  padding: 10px;
+}
+
+.announcement {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgba(182, 180, 180, 0.198);
+  padding: 10% 3%;
+  margin: 15px auto;
+}
+
+.announcement-title {
+  width: 100%;
+  text-align: center;
+  padding: 1%;
+  margin: 5% 5% 5%;
+  border-bottom: inset rgb(51, 51, 51) 1px;
+  text-transform: capitalize;
+}
+
+.announcement-description {
+  text-align: justify;
+  line-height: 1.5;
+  margin: 2% 5%;
+}
+
+.exam-date {
+  width: 100%;
+  margin: 0 5%;
+  line-height: 1.5;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.announcement-author {
+  width: 100%;
+  text-align: right;
+}
+
+.announcement-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  font-weight: bold;
+  color: green;
+}
+
+.announcement-created {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  font-weight: bold;
+}
+
+@media (min-width: 1025px) {
+  h1 {
+    padding: 2.5% 0;
+  }
+  .announcements-buttons {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .announcements-buttons > button {
+    padding: 10px 20px;
+  }
+  #sort-input {
+    width: auto;
+    padding: 1%;
+    margin-top: 0;
+  }
+  .announcements-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .announcement {
+    padding: 2.5% 3%;
+    margin: 25px 0;
+  }
+  .announcement-title {
+    margin: 2.5%;
+  }
+  .announcement-type,
+  .announcement-created {
+    padding: 25px;
+  }
+}
