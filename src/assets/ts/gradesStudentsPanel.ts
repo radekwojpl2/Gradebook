@@ -28,7 +28,7 @@ var interval = () => {
 
     axios.get('/grades.json')
     .then( (response) => { 
-        gradesData = response.data;
+        gradesData = Object.values(response.data);
     })
     .catch( (error) => { console.error(error) });
 
