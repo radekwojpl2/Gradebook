@@ -7,8 +7,6 @@ import {TopPanel} from './TopPanel';
 
 //import menu
 TopPanel();
-
-
 let subjectList = document.getElementById("subjectList") as HTMLSelectElement;
 let container = document.getElementById("container") as HTMLElement;
 let grades:Array<Grade>;
@@ -75,7 +73,6 @@ function fetchUsers(){
        createUserRow(subjectList.value)})
    .catch( error => {
       alert (error.message) 
-   //    poprawić to na cos ladniejszego   
    })
 }
    
@@ -109,31 +106,38 @@ function createGrade(grade: Array<Grade>, parentElement:HTMLElement) {
 function createUserRow(subject:string) {
     userMap.forEach((value: Array<Grade>, key: User) => {
             const userRow = createElementWithClass("div","userRow");
+            const wrapper1 = createElementWithClass("div","wrapper")
+            const wrapper2 = createElementWithClass("div","wrapper")
+            userRow.appendChild(wrapper1);
+            userRow.appendChild(wrapper2)
             userRow.setAttribute("id", key.user_id.toString())
             container.appendChild(userRow)
-            createUserName(key.firstName + " " + key.secondName, userRow)
+
+
+            createUserName(key.firstName + " " + key.secondName, wrapper1)
             let gradesBySubject = userMap.get(key)?.filter(g => g.subject === subject)
-            createGrade( gradesBySubject || [],userRow);
-            createGradesDropdown(userRow)
-            createGradeTitle(userRow)
-            createPlusButton(userRow)
+            createGrade( gradesBySubject || [],wrapper1);
+
+            createGradesDropdown(wrapper2)
+            createGradeTitle(wrapper2)
+            createPlusButton(wrapper2)
             })
 }
 
 // CREATE MAP of users and grades
 let userMap: Map<User,Array<Grade>> = new Map()
 function createUserGradeMap (user:User) {
-    console.log('filtering map')
     userMap.set( user, grades.filter(grade => grade.user_id === user.user_id ))
 }
 
 // CREATE GRADE INPUT
 function createGradesDropdown(parentElement:HTMLElement) {
     const grades: Array<string> = ["2","3","4","5"]
-    const select = <HTMLInputElement>createElement("select");
+    const select = <HTMLInputElement>createElementWithClass("select","inputs");
     const defaultOption = <HTMLInputElement>createElement("option");
     defaultOption.value = "";
     defaultOption.setAttribute("selected", "selected");
+    defaultOption.innerHTML = "Wybierz ocenę";
     select.appendChild(defaultOption)
     grades.forEach(g => {
         const option = <HTMLInputElement>createElement("option");
@@ -153,17 +157,18 @@ function createPlusButton(parentElement:HTMLElement){
 }
 
 function createGradeTitle(parentElement:HTMLElement){
-    const input = <HTMLInputElement>createElement("input");
+    const input = <HTMLInputElement>createElementWithClass("input","inputs");
+    input.placeholder = "Wprowadź tytuł"
     parentElement.appendChild(input)
 }
 
 function addNewGrade(e:MouseEvent) {
     let button = <HTMLElement> e.target;
-    let select = <HTMLInputElement> button.parentNode?.childNodes[2];
-    let gradeTitle = <HTMLInputElement> button.parentNode?.childNodes[3];
-    let parentNode = <HTMLElement> button.parentNode;
+    let select = <HTMLInputElement> button.parentNode?.childNodes[0];
+    let gradeTitle = <HTMLInputElement> button.parentNode?.childNodes[1];
+    let parentNode = <HTMLElement> button.parentNode?.parentNode;
     
-    if (select.value !="" || gradeTitle.value !="") {
+    if ([2,3,4,5].includes(+select.value) && gradeTitle.value !="") {
         const newGrade:Grade = <Grade> {
         date: new Date().toLocaleDateString('en-ZA'),
         grade: +select.value,
@@ -175,12 +180,7 @@ function addNewGrade(e:MouseEvent) {
     .then ( response => 
     {window.location.reload()});    
     }
-    clearInput(gradeTitle)
-    clearInput(select)
-}
-
-function clearInput (element:HTMLInputElement){
-    element.value = '';
+    else alert("Wprowadź brakujące dane");
 }
 
 function createElementWithClass(element:string, elementClass?:string) {

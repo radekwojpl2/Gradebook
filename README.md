@@ -123,3 +123,15 @@ Panel z ogłoszeniami jest tworzony dynamicznie. Sekcja jest tworzona za pomocą
 Ogłoszenia są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios.
 
 Domyślnie zostają wyświetlone wszystkie ogłoszenia w kolejności od najnowszego. Istnieje możliwość filtrowania ogłoszeń w zależności od rodzaju (normal, important, exam). Można również sortować ogłoszenia po dacie oraz stopniu ważności.
+
+
+## Grades - Teacher's Panel
+
+Panel zawierający listę uczniów oraz ocen jest tworzony dynamicznie za pomocą funkcji. Dane są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios. Otrzymane dane są filtrowane i umieszczane w mapie, gdzie kluczem jest User a wartością przefiltrowane  oceny. 
+
+```bash
+let userMap: Map<User,Array<Grade>> = new Map()
+function createUserGradeMap (user:User) {
+    userMap.set( user, grades.filter(grade => grade.user_id === user.user_id ))
+```
+Ponadto oceny można filtrować w zależności od przedmiotu z którego zostały wystawione. Istnieje możliwość dodania nowej oceny wraz z jej opisem. Nowa ocena zostaje przesłana do bazy, a strona zostaje na nowo załadowana.
