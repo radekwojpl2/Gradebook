@@ -1,0 +1,109 @@
+{
+    "students": [
+    {
+        "id": 1,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 2,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 3,
+        "gender": "male",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 4,
+        "gender": "male",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 5,
+        "gender": "male",
+        "secondLanguage": "italian"
+    },
+    {
+        "id": 6,
+        "gender": "female",
+        "secondLanguage": "italian"
+    },
+    {
+        "id": 7,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 8,
+        "gender": "male",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 9,
+        "gender": "female",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 10,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 11,
+        "gender": "male",
+        "secondLanguage": "italian"
+    }, {
+        "id": 12,
+        "gender": "female",
+        "secondLanguage": "spanish"
+    },
+    {
+        "id": 13,
+        "gender": "female",
+        "secondLanguage": "chinese"
+    },
+    {
+        "id": 14,
+        "gender": "female",
+        "secondLanguage": "french"
+    },
+    {
+        "id": 15,
+        "gender": "male",
+        "secondLanguage": "spanish"
+    },
+    {
+        "id": 16,
+        "gender": "male",
+        "secondLanguage": "german"
+    },
+    {
+        "id": 17,
+        "gender": "female",
+        "secondLanguage": "chinese"
+    }],
+    "exams" : [
+        {"id":1,
+        "subject": "mathematic",
+        "topic": "Functions",
+        "timestamp": 1611532800},
+        {"id":2,
+        "subject": "english",
+        "topic": "Conditionals",
+        "timestamp": 1614211200},
+        {"id":3,
+        "subject": "biology",
+        "topic": "Inheritance",
+        "timestamp": 1614470400}
+    ],
+    "holidays" : [
+        {"id":1,
+            "holiday": "Valetine's Day",
+            "timestamp": 1613260800},
+        {"id":2,
+            "holiday": "New Year",
+            "timestamp": 1609459200}
+        ]
+}
