@@ -9,7 +9,7 @@ let usersData : Array<UsersInterface> = [];
 let gradesData : Array<GradesInterface> = [];
 
 var interval = () => {
-    const button : HTMLElement | null = document.querySelector('.gradesPanel > button');
+    const button = document.querySelector('.gradesPanel > button') as HTMLElement;
 
     button?.addEventListener('click', () => {
         const secret = (document.querySelector('.gradesPanel > input') as HTMLTextAreaElement).value.trim();
@@ -48,7 +48,7 @@ interval();
 setInterval(interval, 30000);
 
 function outputStudents(users : Object[]) : void {
-    var ulStudentList : HTMLElement | any = document.querySelector("#studentList");
+    var ulStudentList = document.querySelector("#studentList") as HTMLElement;
     var outputStudentList : string = ""
    
     users.forEach((element : Object | any)=> {
@@ -58,7 +58,7 @@ function outputStudents(users : Object[]) : void {
 }
 
 function outputGrades(id : number | boolean, isSecret : boolean) : void {
-    var ulStudentList : HTMLElement | any = document.querySelector("#studentGrades");
+    var ulStudentList = document.querySelector("#studentGrades") as HTMLElement;
     var outputList : string = "";
     var outputGrades : string = "";
     var gradesArray : Array<GradesArrayInterface> = [
