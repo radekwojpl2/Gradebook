@@ -103,8 +103,8 @@ TopPanel()
 Na stronie głównej użyty został pakiet [Chart.js](https://www.chartjs.org/) w celu zaimplementowania wykresów. Na podstawie tego pakietu stworzona została klasa Charts, która ma na celu generowanie wyłącznie jednego z dwóch typów wykresu:
 
 - polarArea
-<<<<<<< HEAD
 ![polarArea](/dist/assets/static/wykres2.PNG)
+
 - radar
 ![radar](/dist/assets/static/wykres1.PNG)
 
