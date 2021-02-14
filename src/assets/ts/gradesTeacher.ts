@@ -20,8 +20,8 @@ async function fetchAllData(){
 fetchAllData()
 
 // GradeLIST
-function fetchGrades(){
-    axios.get('/grades.json')
+async function fetchGrades(){
+    await axios.get('/grades.json')
     .then(response =>{ 
             if(response.status != 200){
         throw new Error("Something went wront while fetching data")
