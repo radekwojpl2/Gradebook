@@ -17,5 +17,7 @@ export interface GradesInterface {
 
 export interface GradesArrayInterface {
     subject: string, 
-    grades: number[]
+    grades: number[],
+    title: string[],
+    date: string[] 
 }

@@ -1,8 +1,10 @@
+
 main{
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    font-family: 'Truculenta', sans-serif;
 }
 .title{
     width: 100%;
@@ -18,12 +20,12 @@ main{
     background-color:  #f2f2f2;
 }
 .students:nth-child(2)>h2, .students:nth-child(3)>h2{
-   text-align: center;
+    text-align: center;
     padding: 2vh;
-   margin-bottom: 4vh;
-   font-size: 4vh;
-   width:100%;
-   border-bottom: 1px solid black;
+    margin-bottom: 4vh;
+    font-size: 4vh;
+    width:100%;
+    border-bottom: 1px solid black;
 }
 .students:nth-child(2)>ol>li{
     font-size: 2.7vh;
@@ -33,41 +35,71 @@ main{
     text-align: center;
 }
 
-.gradesPanel > input{
+.gradesPanel > input, .gradesPanel > button{
     width: 20vh;
-    height: 5vh;
-    margin: 2vh;
+    height: 4.5vh;
+    margin: 1vh;
 }
 
 .gradesPanel > button{
-    width: 15vh;
-    height: 5vh;
-    margin: 2vh;
     background: none;
 }
-#studentGrades, #studentGrades>span{
-    width: 100%;
+#studentGrades{
+    margin-top: 2vh;
 }
-#studentGrades>span, #studentGrades>span>li{
+.subjectGrades{
     display: flex;
+    justify-content: left;
+    height: 5vh;
 }
 
-#studentGrades>span{
+.subjectGrades>span{
+    text-align: left;
+    width: 25%;
+    height: 5vh;
     font-size: 2.5vh;
     padding: .5vh;
 }
 
-#gradesList>ul{
-    text-decoration: none;
-    display: block;
+#gradesList {
+    text-align: left;
+    width : 75%;
 }
+
 #gradesList>li{
     margin: .2vh;
     background-color: white;
     border:1px solid black;
-    padding: 1vh;
+    padding: .7vh;
     font-size: 2vh;
     list-style-type: none;
     display: inline;
 }
-
+#showDetails{
+    padding:1vh;
+    font-size: 2vh;
+    width: 30vw;
+    height: 20vh;
+    position: absolute;
+    left: 35%;
+    top: 40%;
+    background-color: white;
+    color: black;
+    display: none;
+}
+#showDetails>div{
+    padding-top: 1.5vh;
+}
+#showDetails>button, #gradesList>li{
+    cursor: pointer;
+}
+#changeOpacity {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, .8);
+    display: none;
+}

@@ -2,6 +2,7 @@ import '../css/gradesStudentsPanel.css';
 import axios from '../../axios';
 import { UsersInterface, GradesInterface, GradesArrayInterface } from "./models/gradesStudentsPanel";
 import { TopPanel } from './TopPanel';
+import { brotliDecompressSync } from 'zlib';
 TopPanel();
 
 let usersData : Array<UsersInterface> = [];
@@ -61,14 +62,14 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
     var outputList : string = "";
     var outputGrades : string = "";
     var gradesArray : Array<GradesArrayInterface> = [
-        { subject: "math", grades: [] },
-        { subject: "english", grades: [] },
-        { subject: "physics", grades: [] },
-        { subject: "biology", grades: [] },
-        { subject: "chemistry", grades: [] },
-        { subject: "french", grades: [] },
-        { subject: "pe", grades: [] },
-        { subject: "it", grades: [] }
+        { subject: "math", grades: [], title: [], date: [] },
+        { subject: "english", grades: [], title: [], date: [] },
+        { subject: "physics", grades: [], title: [], date: [] },
+        { subject: "biology", grades: [], title: [], date: [] },
+        { subject: "chemistry", grades: [], title: [], date: [] },
+        { subject: "french", grades: [], title: [], date: [] },
+        { subject: "pe", grades: [], title: [], date: [] },
+        { subject: "it", grades: [], title: [], date: [] }
     ]
 
     gradesData.forEach((element)=> {  
@@ -77,6 +78,8 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
                 gradesArray.forEach((el) => {              
                     if(el.subject.toLowerCase() == element.subject) {
                         el.grades.push(element.grade);
+                        el.title.push(element.title);
+                        el.date.push(element.date);
                     }
                 })
             }
@@ -87,13 +90,42 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
 
     if(isSecret) {
         gradesArray.forEach((object) => {
-            object.grades.forEach ((grade) => {
-                outputGrades += `<li>${grade}</li>`;
-            })
-            outputList += `<span>${object.subject}: <ul id="gradesList">${outputGrades}</ul></span> `;
+            for(let i = 0; i < object.grades.length; i++){
+                outputGrades += `<li data-title="${object.title[i]}" data-date="${object.date[i]}" data-subject="${object.subject}">${object.grades[i]}</li>`;
+            }
+            outputList += `<div class='subjectGrades'><span>${object.subject}: </span><ul id="gradesList">${outputGrades}</ul></div> `;
             outputGrades = "";
         })
     }
 
     ulStudentList.innerHTML = outputList;
+
+
+    var gradeDataset : NodeList = document.querySelectorAll("#gradesList > li");
+    var gradeDivContent = document.querySelector("#showDetails > div") as HTMLElement;
+    const outputSection = document.querySelector("#showDetails") as HTMLElement;
+    const changeOpacity = document.querySelector("#changeOpacity") as HTMLElement;
+
+    gradeDataset.forEach((singleGrade) => {
+        singleGrade.addEventListener('click', function(this : HTMLElement) {
+            outputSection.style.display = "block";
+            changeOpacity.style.display = "block";
+            
+            gradeDivContent.innerHTML = `
+                <p>Subject: ${this.dataset.subject}</p>
+                <p>Date: ${this.dataset.date}</p>
+                <p>Title: ${this.dataset.title}</p>
+            `;
+
+        })
+    })
+    
+    var closeButtton = document.querySelector("#showDetails > button") as HTMLElement;
+    closeButtton.addEventListener('click', () => {
+        outputSection.style.display = "none";
+        changeOpacity.style.display = "none";
+    })
+
 }
+
+
