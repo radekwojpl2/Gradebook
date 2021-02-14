@@ -1,0 +1,48 @@
+#container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+#wrapper {
+    display: flex;
+}
+
+.column {
+    width: 33%;
+}
+
+.userRow {
+    display: flex;
+}
+
+.userName {
+    border-top: 1px solid black;
+    align-items: center;
+    width: 50%;
+}
+
+.grade {
+    border-top: 1px solid black;
+    align-items: center;
+    width: 50%;
+}
+
+.title {
+    border-top: 1px solid black;
+    font-weight: bold;
+    align-items: center;
+    width: 50%;
+}
+
+#subjectList {
+    margin-left: auto;
+}
+
+.button {
+    background-color: black;
+    color: white;
+    font-size: 50%;
+    height: 100%;
+}
