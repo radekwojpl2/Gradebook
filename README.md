@@ -1,11 +1,18 @@
-### GRadebook skład
+
+
+# CodersCamp2020.GradeBook
+
+### Demo
+
+https://radekwojpl2.github.io/Gradebook/.
+
+### Gradebook skład
 
     a. Klient -> Radek
     b. Tech Lead -> Marta, Wiktoria
     c. Product Owner -> Kinga, Justyna
     d. Development Manager -> Mateusz , Radek
 
-# CodersCamp2020.GradeBook
 
 ### Konfiguracja projektu
 
