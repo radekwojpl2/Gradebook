@@ -1,11 +1,18 @@
-### GRadebook skład
+
+
+# CodersCamp2020.GradeBook
+
+### Demo
+
+https://radekwojpl2.github.io/Gradebook/.
+
+### Gradebook skład
 
     a. Klient -> Radek
     b. Tech Lead -> Marta, Wiktoria
     c. Product Owner -> Kinga, Justyna
     d. Development Manager -> Mateusz , Radek
 
-# CodersCamp2020.GradeBook
 
 ### Konfiguracja projektu
 
@@ -103,12 +110,14 @@ TopPanel()
 Na stronie głównej użyty został pakiet [Chart.js](https://www.chartjs.org/) w celu zaimplementowania wykresów. Na podstawie tego pakietu stworzona została klasa Charts, która ma na celu generowanie wyłącznie jednego z dwóch typów wykresu:
 
 - polarArea
-  ![polarArea](/dist/assets/static/wykres2.png)
-- radar
-  ![radar](/dist/assets/static/wykres1.png)
+![polarArea](/dist/assets/static/wykres2.PNG)
 
-Na stronie znajduje się również kalendarz, który został zbudowany przy użyciu pakietu [Moment.js](https://momentjs.com/).
-![calendar](/dist/assets/static/kalendarz.png)
+- radar
+![radar](/dist/assets/static/wykres1.PNG)
+
+Na stronie znajduje się również kalendarz, który został zbudowany przy użyciu pakietu [Moment.js](https://momentjs.com/). 
+![calendar](/dist/assets/static/kalendarz.PNG)
+
 
 Zmiana wyświetlango miesiąca możliwa jest po naciśnięciu strzałek. Na kalendarzu zostały zaznaczone dwa rodzaje zdarzeń:
 
