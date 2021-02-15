@@ -7,10 +7,16 @@ import {TopPanel} from './TopPanel';
 
 //import menu
 TopPanel();
+
+
 let subjectList = document.getElementById("subjectList") as HTMLSelectElement;
 let container = document.getElementById("container") as HTMLElement;
 let grades:Array<Grade>;
-subjectList.addEventListener('change',changeSubject)
+
+document.addEventListener("DOMContentLoaded", function(){
+    subjectList.addEventListener('change',changeSubject)
+
+})
 
 async function fetchAllData(){
     await Promise.all([
@@ -37,8 +43,8 @@ async function fetchGrades(){
 }
     
 // SubjectsLIST
-function fetchSubjects(){
-    axios.get('/subjects.json')
+async function fetchSubjects(){
+    await axios.get('/subjects.json')
     .then(response =>{ 
     if(response.status != 200){
     throw new Error("Something went wront while fetching data")
@@ -56,8 +62,8 @@ function fetchSubjects(){
 }
 
 // USERSLIST
-function fetchUsers(){
-    axios.get('/users.json')
+async function fetchUsers(){
+    await axios.get('/users.json')
    .then(response =>
         { if(response.status != 200){
        throw new Error("Something went wront while fetching data")
@@ -76,7 +82,7 @@ function fetchUsers(){
    })
 }
    
-function createSubjectList(subject: string, parentElement:HTMLElement) {
+export function createSubjectList(subject: string, parentElement:HTMLElement) {
     const option = <HTMLInputElement>createElement("option");
     option.value = subject;
     option.innerHTML = subject;
@@ -84,26 +90,26 @@ function createSubjectList(subject: string, parentElement:HTMLElement) {
     return option;
 }
 
-function changeSubject() {
+export function changeSubject() {
     document.querySelectorAll(".userRow").forEach(row => row.remove())
     createUserRow(subjectList.value)
     }
     
-function createUserName(name:string, parentElement:HTMLElement) {
+export function createUserName(name:string, parentElement:HTMLElement) {
     const userName = createElementWithClass("div","userName");
     userName.innerHTML = name;
     parentElement.appendChild(userName)
     return userName;
 }
 
-function createGrade(grade: Array<Grade>, parentElement:HTMLElement) {
+export function createGrade(grade: Array<Grade>, parentElement:HTMLElement) {
     const newGrade = createElementWithClass("div","grade");
     newGrade.innerHTML = String(grade.map(g => g.grade))
     parentElement.appendChild(newGrade)
     return newGrade;
 }
 
-function createUserRow(subject:string) {
+export function createUserRow(subject:string) {
     userMap.forEach((value: Array<Grade>, key: User) => {
             const userRow = createElementWithClass("div","userRow");
             const wrapper1 = createElementWithClass("div","wrapper")
@@ -126,12 +132,12 @@ function createUserRow(subject:string) {
 
 // CREATE MAP of users and grades
 let userMap: Map<User,Array<Grade>> = new Map()
-function createUserGradeMap (user:User) {
+export function createUserGradeMap (user:User) {
     userMap.set( user, grades.filter(grade => grade.user_id === user.user_id ))
 }
 
 // CREATE GRADE INPUT
-function createGradesDropdown(parentElement:HTMLElement) {
+export function createGradesDropdown(parentElement:HTMLElement) {
     const grades: Array<string> = ["2","3","4","5"]
     const select = <HTMLInputElement>createElementWithClass("select","inputs");
     const defaultOption = <HTMLInputElement>createElement("option");
@@ -149,20 +155,22 @@ function createGradesDropdown(parentElement:HTMLElement) {
     return select 
 }
 
-function createPlusButton(parentElement:HTMLElement){
+export function createPlusButton(parentElement:HTMLElement){
     let button = createElementWithClass("button","button") 
     button.addEventListener("click", addNewGrade)
     button.innerHTML = "+"
     parentElement.appendChild(button)
+    return button
 }
 
-function createGradeTitle(parentElement:HTMLElement){
+export function createGradeTitle(parentElement:HTMLElement){
     const input = <HTMLInputElement>createElementWithClass("input","inputs");
     input.placeholder = "Wprowadź tytuł"
     parentElement.appendChild(input)
+    return input
 }
 
-function addNewGrade(e:MouseEvent) {
+export function addNewGrade(e:MouseEvent) {
     let button = <HTMLElement> e.target;
     let select = <HTMLInputElement> button.parentNode?.childNodes[0];
     let gradeTitle = <HTMLInputElement> button.parentNode?.childNodes[1];
@@ -183,13 +191,13 @@ function addNewGrade(e:MouseEvent) {
     else alert("Wprowadź brakujące dane");
 }
 
-function createElementWithClass(element:string, elementClass?:string) {
+export function createElementWithClass(element:string, elementClass:string) {
     let newElement = createElement(element)
-    if (elementClass !== undefined) {newElement.classList.add(elementClass)};
+    newElement.classList.add(elementClass);
     return newElement;
 }
 
-function createElement(element:string) {
+export function createElement(element:string) {
     let newElement = document.createElement(element);
     return newElement;
 }
