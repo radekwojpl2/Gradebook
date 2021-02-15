@@ -96,7 +96,15 @@
         {"id":3,
         "subject": "biology",
         "topic": "Inheritance",
-        "timestamp": 1614470400}
+        "timestamp": 1614470400},
+        {"id":3,
+        "subject": "codersCamp",
+        "topic": "React",
+        "timestamp": 1615248000},
+        {"id":3,
+        "subject": "codersCamp",
+        "topic": "Node project",
+        "timestamp": 1615852800}
     ],
     "holidays" : [
         {"id":1,
@@ -104,6 +112,12 @@
             "timestamp": 1613260800},
         {"id":2,
             "holiday": "New Year",
-            "timestamp": 1609459200}
+            "timestamp": 1609459200},
+        {"id":4,
+            "holiday": "Womens's day",
+            "timestamp": 1615161600},  
+        {"id":5,
+        "holiday": "Men's day",
+        "timestamp": 1615334400}
         ]
 }
