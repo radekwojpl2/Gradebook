@@ -1,7 +1,6 @@
 const path = require( 'path' );
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 let htmlPageNames = ['announcementsTeacher', 'announcementsStudent'];
 const multipleHtmlPlugins = htmlPageNames.map(name => {
   return new HtmlWebpackPlugin({
