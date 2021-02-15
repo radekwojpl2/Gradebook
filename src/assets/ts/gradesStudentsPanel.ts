@@ -2,18 +2,17 @@ import '../css/gradesStudentsPanel.css';
 import axios from '../../axios';
 import { UsersInterface, GradesInterface, GradesArrayInterface } from "./models/gradesStudentsPanel";
 import { TopPanel } from './TopPanel';
-import { brotliDecompressSync } from 'zlib';
 TopPanel();
 
 let usersData : Array<UsersInterface> = [];
 let gradesData : Array<GradesInterface> = [];
 
-var interval = () => {
+function interval() : void {
     const button = document.querySelector('.gradesPanel > button') as HTMLElement;
 
     button?.addEventListener('click', () => {
         const secret = (document.querySelector('.gradesPanel > input') as HTMLTextAreaElement).value.trim();
-        const user_id : number | boolean = getId(secret);
+        const user_id : number | boolean = getId(secret, usersData);
         let isSecret : boolean = false
         if(secret) isSecret = usersData.some(i => i.secret.includes(secret));    
         outputGrades(user_id, isSecret);
@@ -31,27 +30,27 @@ var interval = () => {
         gradesData = Object.values(response.data);
     })
     .catch( (error) => { console.error(error) });
+}
 
-    function getId(secret : string) : number | boolean {
-        let id : number | null = null;
-        usersData.forEach((element) => {
-            if(element.secret == secret)  {
-                id = element.user_id;
-            }
-        });
-        if(id !== null) return id;
-        return false;
-    }
+export function getId(secret : string, dataArray : Array<UsersInterface>) : number | boolean {
+    let id : number | null = null;
+    dataArray.forEach((element) => {
+        if(element.secret == secret)  {
+            id = element.user_id;
+        }
+    });
+    if(id !== null) return id;
+    return false;
 }
 
 interval();
 setInterval(interval, 30000);
 
 function outputStudents(users : Object[]) : void {
-    var ulStudentList = document.querySelector("#studentList") as HTMLElement;
-    var outputStudentList : string = ""
+    const ulStudentList = document.querySelector("#studentList") as HTMLElement;
+    let outputStudentList : string = ""
    
-    users.forEach((element : Object | any)=> {
+    users.forEach((element : Object | any) => {
         outputStudentList += `<li>${element.firstName} ${element.secondName}</li>`;
     });
     ulStudentList.innerHTML = outputStudentList;
@@ -100,7 +99,6 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
 
     ulStudentList.innerHTML = outputList;
 
-
     var gradeDataset : NodeList = document.querySelectorAll("#gradesList > li");
     var gradeDivContent = document.querySelector("#showDetails > div") as HTMLElement;
     const outputSection = document.querySelector("#showDetails") as HTMLElement;
@@ -125,7 +123,4 @@ function outputGrades(id : number | boolean, isSecret : boolean) : void {
         outputSection.style.display = "none";
         changeOpacity.style.display = "none";
     })
-
 }
-
-
