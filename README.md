@@ -155,4 +155,4 @@ Ponadto oceny można filtrować w zależności od przedmiotu z którego zostały
 
 Podobnie jak w przypadku poprzedniej sekcji, dane do tej podstrony pobierane są dynamiczne za pomocą pakietu axios zwracającego zapytanie z Firebase RealTime Database. Lewy panel zawiera scrollowalną listę uczniów pobieranych z tabeli `users`. Prawa sekcja posiada pole do wprowadzania `sekretu ucznia`, na podstawie którego autoryzujemy dostęp do indywidualnych ocen do każdego z użytkowników naszej strony. Cała strona dodatkowo jest gotowa na jakiekolwiek interakcje z bazą danych, gdyż odświeża się automatycznie, co powoduję aktualizację danych na stronie bez utraty aktualnie zapisanych ocen.
 
-![gradesStudentsPanel](/dist/assets/static/gradesStudentsPanel.PNG);
+![gradesStudentsPanel](/dist/assets/static/gradesStudentsPanel.png)
