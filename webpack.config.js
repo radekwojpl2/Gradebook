@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let htmlPageNames = ['announcementsTeacher', 'announcementsStudent', 'gradesTeacher'];
+let htmlPageNames = ['announcementsTeacher', 'announcementsStudent', 'gradesTeacher', 'gradesStudentsPanel'];
 const multipleHtmlPlugins = htmlPageNames.map(name => {
     return new HtmlWebpackPlugin({
         template: `./src/${name}.html`, // relative path to the HTML files
@@ -25,7 +25,8 @@ module.exports = {
         main: './src/assets/ts/main.ts',
         announcementsTeacher: './src/assets/ts/announcementsTeacher.ts',
         announcementsStudent: './src/assets/ts/announcementsStudent.ts',
-        gradesTeacher: './src/assets/ts/gradesTeacher.ts'
+        gradesTeacher: './src/assets/ts/gradesTeacher.ts',
+        gradesStudentsPanel: './src/assets/ts/gradesStudentsPanel.ts'
     },
 
     // output bundles (location)
