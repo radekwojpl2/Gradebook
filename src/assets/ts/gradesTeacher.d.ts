@@ -1,0 +1,15 @@
+import '../css/gradesTeacher.css';
+import { User } from './User';
+import { Grade } from './Grade';
+export declare function createSubjectList(subject: string, parentElement: HTMLElement): HTMLInputElement;
+export declare function changeSubject(): void;
+export declare function createUserName(name: string, parentElement: HTMLElement): HTMLElement;
+export declare function createGrade(grade: Array<Grade>, parentElement: HTMLElement): HTMLElement;
+export declare function createUserRow(subject: string): void;
+export declare function createUserGradeMap(user: User): void;
+export declare function createGradesDropdown(parentElement: HTMLElement): HTMLInputElement;
+export declare function createPlusButton(parentElement: HTMLElement): HTMLElement;
+export declare function createGradeTitle(parentElement: HTMLElement): HTMLInputElement;
+export declare function addNewGrade(e: MouseEvent): void;
+export declare function createElementWithClass(element: string, elementClass: string): HTMLElement;
+export declare function createElement(element: string): HTMLElement;

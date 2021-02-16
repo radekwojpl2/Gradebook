@@ -149,3 +149,10 @@ function createUserGradeMap (user:User) {
     userMap.set( user, grades.filter(grade => grade.user_id === user.user_id ))
 ```
 Ponadto oceny można filtrować w zależności od przedmiotu z którego zostały wystawione. Istnieje możliwość dodania nowej oceny wraz z jej opisem. Nowa ocena zostaje przesłana do bazy, a strona zostaje na nowo załadowana.
+
+
+## Grades - Student's Panel
+
+Podobnie jak w przypadku poprzedniej sekcji, dane do tej podstrony pobierane są dynamiczne za pomocą pakietu axios zwracającego zapytanie z Firebase RealTime Database. Lewy panel zawiera scrollowalną listę uczniów pobieranych z tabeli `users`. Prawa sekcja posiada pole do wprowadzania `sekretu ucznia`, na podstawie którego autoryzujemy dostęp do indywidualnych ocen do każdego z użytkowników naszej strony. Cała strona dodatkowo jest gotowa na jakiekolwiek interakcje z bazą danych, gdyż odświeża się automatycznie, co powoduję aktualizację danych na stronie bez utraty aktualnie zapisanych ocen.
+
+![gradesStudentsPanel](/dist/assets/static/gradesStudentsPanel.PNG);
