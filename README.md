@@ -1,11 +1,18 @@
-### GRadebook skład
+
+
+# CodersCamp2020.GradeBook
+
+### Demo
+
+https://radekwojpl2.github.io/Gradebook/.
+
+### Gradebook skład
 
     a. Klient -> Radek
     b. Tech Lead -> Marta, Wiktoria
     c. Product Owner -> Kinga, Justyna
     d. Development Manager -> Mateusz , Radek
 
-# CodersCamp2020.GradeBook
 
 ### Konfiguracja projektu
 
@@ -103,12 +110,14 @@ TopPanel()
 Na stronie głównej użyty został pakiet [Chart.js](https://www.chartjs.org/) w celu zaimplementowania wykresów. Na podstawie tego pakietu stworzona została klasa Charts, która ma na celu generowanie wyłącznie jednego z dwóch typów wykresu:
 
 - polarArea
-  ![polarArea](/dist/assets/static/wykres2.png)
-- radar
-  ![radar](/dist/assets/static/wykres1.png)
+![polarArea](/dist/assets/static/wykres2.PNG)
 
-Na stronie znajduje się również kalendarz, który został zbudowany przy użyciu pakietu [Moment.js](https://momentjs.com/).
-![calendar](/dist/assets/static/kalendarz.png)
+- radar
+![radar](/dist/assets/static/wykres1.PNG)
+
+Na stronie znajduje się również kalendarz, który został zbudowany przy użyciu pakietu [Moment.js](https://momentjs.com/). 
+![calendar](/dist/assets/static/kalendarz.PNG)
+
 
 Zmiana wyświetlango miesiąca możliwa jest po naciśnięciu strzałek. Na kalendarzu zostały zaznaczone dwa rodzaje zdarzeń:
 
@@ -124,9 +133,19 @@ Ogłoszenia są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu
 
 Domyślnie zostają wyświetlone wszystkie ogłoszenia w kolejności od najnowszego. Istnieje możliwość filtrowania ogłoszeń w zależności od rodzaju (normal, important, exam). Można również sortować ogłoszenia po dacie oraz stopniu ważności.
 
-
 ### Panel Announcements - Teacher
 
 Formularz służący do wysłania ogłoszenia tworzony jest dynamicznie w pliku 'teacherForm.ts'. Do wyboru są trzy typy ogłoszeń 'normal', 'important' i 'exam'. W każdym z typów ogłoszeń należy wypełnić pola 'name' (imię wystawiającego ogłoszenie), 'title' (tytuł ogłoszenia), 'message' (treść ogłoszenia) oraz dodatkowo dla typu 'exam' pole 'date' (z datą egzaminu). Po kliknięciu przycisku 'Submit' dane z formularza pobierane są za pomocą funkcji w pliku 'submitAnnouncementForm.ts', a następnie zostają wysłane za pomocą axios - klienta HTTP opartego na Promise.
 
 Do przechowywania ogłoszeń wykorzystana jest nierelacyjna baza danych Firebase - Realtime Database, w której do rekordów dodawane jest dodatkowo pole 'timestamp' ze znacznikiem czasowym, kiedy ogłoszenie zostało wysłane. Umożliwia to później łatwiejsze filtrowanie ogłoszeń po czasie ich dodania.
+
+## Grades - Teacher's Panel
+
+Panel zawierający listę uczniów oraz ocen jest tworzony dynamicznie za pomocą funkcji. Dane są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios. Otrzymane dane są filtrowane i umieszczane w mapie, gdzie kluczem jest User a wartością przefiltrowane  oceny. 
+
+```bash
+let userMap: Map<User,Array<Grade>> = new Map()
+function createUserGradeMap (user:User) {
+    userMap.set( user, grades.filter(grade => grade.user_id === user.user_id ))
+```
+Ponadto oceny można filtrować w zależności od przedmiotu z którego zostały wystawione. Istnieje możliwość dodania nowej oceny wraz z jej opisem. Nowa ocena zostaje przesłana do bazy, a strona zostaje na nowo załadowana.

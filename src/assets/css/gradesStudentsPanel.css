@@ -1,0 +1,134 @@
+
+main{
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-family: 'Truculenta', sans-serif;
+}
+.title{
+    width: 100%;
+    height: 19vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3vh;
+}
+.students{
+    height: 68vh;
+    background-color:  #f2f2f2;
+}
+.students:nth-child(2){
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.students:nth-child(3){
+    width: 60%;
+}
+.students:nth-child(2)>h2{
+    height: 10vh;
+}
+
+.students:nth-child(2)>h2, .students:nth-child(3)>h2{
+    text-align: center;
+    padding: 2vh;
+    margin-bottom: 4vh;
+    font-size: 4vh;
+    width:100%;
+    border-bottom: 1px solid black;
+}
+
+.students:nth-child(2)>ol>li{
+    font-size: 2.7vh;
+    padding: .5vh;
+}
+ol {
+    overflow-y: scroll;
+    height: 30vh;
+    width: 70%;
+}
+ol>li{
+    width: 70%;
+}
+.gradesPanel{
+    text-align: center;
+}
+
+.gradesPanel > input, .gradesPanel > button{
+    width: 20vh;
+    height: 4.5vh;
+    margin: 1vh;
+}
+
+.gradesPanel > button{
+    background: none;
+}
+#studentGrades{
+    margin-top: 2vh;
+}
+.subjectGrades{
+    display: flex;
+    justify-content: left;
+    height: 5vh;
+}
+
+.subjectGrades>span{
+    text-align: left;
+    width: 25%;
+    height: 5vh;
+    font-size: 2.5vh;
+    padding: .5vh;
+}
+
+#gradesList {
+    text-align: left;
+    width : 75%;
+}
+
+#gradesList>li{
+    margin: .2vh;
+    background-color: white;
+    border:1px solid black;
+    padding: .7vh;
+    font-size: 2vh;
+    list-style-type: none;
+    display: inline;
+}
+#showDetails{
+    padding:1vh;
+    font-size: 2vh;
+    width: 30vw;
+    height: 20vh;
+    position: absolute;
+    left: 35%;
+    top: 40%;
+    background-color: white;
+    color: black;
+    display: none;
+}
+#showDetails>div{
+    padding-top: 1.5vh;
+}
+#showDetails>button, #gradesList>li{
+    cursor: pointer;
+}
+#changeOpacity {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, .8);
+    display: none;
+}
+@media (max-width: 740px){
+   
+    .students:nth-child(2),.students:nth-child(3) {
+        margin-bottom: 2vh;
+        width: 80vw;
+        height: 100vh; 
+    }
+}
