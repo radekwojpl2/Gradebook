@@ -123,3 +123,10 @@ Panel z ogłoszeniami jest tworzony dynamicznie. Sekcja jest tworzona za pomocą
 Ogłoszenia są zaciągane z bazy Firebase RealTime Database, za pomocą pakietu axios.
 
 Domyślnie zostają wyświetlone wszystkie ogłoszenia w kolejności od najnowszego. Istnieje możliwość filtrowania ogłoszeń w zależności od rodzaju (normal, important, exam). Można również sortować ogłoszenia po dacie oraz stopniu ważności.
+
+
+### Panel Announcements - Teacher
+
+Formularz służący do wysłania ogłoszenia tworzony jest dynamicznie w pliku 'teacherForm.ts'. Do wyboru są trzy typy ogłoszeń 'normal', 'important' i 'exam'. W każdym z typów ogłoszeń należy wypełnić pola 'name' (imię wystawiającego ogłoszenie), 'title' (tytuł ogłoszenia), 'message' (treść ogłoszenia) oraz dodatkowo dla typu 'exam' pole 'date' (z datą egzaminu). Po kliknięciu przycisku 'Submit' dane z formularza pobierane są za pomocą funkcji w pliku 'submitAnnouncementForm.ts', a następnie zostają wysłane za pomocą axios - klienta HTTP opartego na Promise.
+
+Do przechowywania ogłoszeń wykorzystana jest nierelacyjna baza danych Firebase - Realtime Database, w której do rekordów dodawane jest dodatkowo pole 'timestamp' ze znacznikiem czasowym, kiedy ogłoszenie zostało wysłane. Umożliwia to później łatwiejsze filtrowanie ogłoszeń po czasie ich dodania.
